@@ -7,3 +7,5 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.marquee-track{transform:none!important}.marquee{overflow-x:auto}.marquee-group[aria-hidden=true]{display:none}.service-card{position:relative!important;top:auto!important}.hero-art{transform:none!important}.manifesto-word{opacity:1!important}}
 
 header{position:fixed;background:#080c0ae8;backdrop-filter:blur(18px);border:1px solid #829d8726;border-radius:50px;top:18px;height:66px;padding:0 22px}.hero{padding-top:128px}@media(max-width:700px){header{top:12px;height:57px;padding:0 17px}.hero{padding-top:105px}}
+
+.partner-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;transition:transform .7s}.partner-card:hover .partner-photo{transform:scale(1.035)}.has-photo:after{background:linear-gradient(transparent 50%,#07160ce6)}.has-photo>span,.has-photo>small{z-index:1;color:#f1f0e8}.partner-info .partner-portfolio{margin-top:18px;border-bottom:1px solid var(--line);width:100%;justify-content:space-between}

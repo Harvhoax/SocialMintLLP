@@ -1,0 +1,8 @@
+export const services = [
+  { title: 'Reels that stop the scroll.', short: 'Reels', text: 'From the first hook to the final cut. Short-form stories made to feel, connect, and stay with people.', tags: ['Concept & scripting', 'Editing & motion', 'Platform-ready delivery'], icon: 'film', color: 'mint' },
+  { title: 'A feed with a point of view.', short: 'Posts & carousels', text: 'Thoughtful design meets a clear message. Static posts and carousels that make your brand instantly recognisable.', tags: ['Visual direction', 'Carousel design', 'Content calendars'], icon: 'grid', color: 'cream' },
+  { title: 'Your social. Handled.', short: 'Account handling', text: 'A consistent presence, without another thing on your list. We keep your channels active and your community connected.', tags: ['Publishing & scheduling', 'Community replies', 'Reporting'], icon: 'message', color: 'mint' },
+  { title: 'Good stories start on set.', short: 'Video shooting', text: 'A fresh perspective on your people, products, and places. Planned, shot, and finished with intention.', tags: ['Creative direction', 'On-location shoots', 'Brand films'], icon: 'camera', color: 'cream' },
+  { title: 'Built to be discovered.', short: 'Account optimization', text: 'Turn a passing visit into a reason to stay. A sharper profile, stronger pillars, and a clear next step.', tags: ['Profile & bio', 'Content pillars', 'Social SEO'], icon: 'spark', color: 'mint' },
+  { title: 'Make the first frame count.', short: 'Thumbnail design', text: 'An idea, distilled into a single image. Standout thumbnails that make people curious about what comes next.', tags: ['Art direction', 'Custom graphics', 'Visual consistency'], icon: 'image', color: 'cream' },
+] as const;

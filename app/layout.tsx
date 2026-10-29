@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 export const metadata: Metadata = {
-  metadataBase: new URL('https://socialmint-creative-studio.greylamp256.chatgpt.site'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://socialmint-creative-studio.greylamp256.chatgpt.site'),
   title: 'SocialMint — Social Media Agency | Reels, Video, Growth',
   description: 'Strategy, stories, and social that grows with you. SocialMint plans, shoots, designs, and runs your content with one consistent creative standard.',
   openGraph: { title: 'SocialMint — A fresh take on social.', description: 'We turn attention into growth. A strategy-led creative social media agency.', images: [{url:'/brand/logo.png',width:1296,height:1213,alt:'SocialMint social media agency'}] },

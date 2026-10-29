@@ -1,5 +1,13 @@
 # SocialMint
 
+## Deploy for the client meeting
+
+Import `Harvhoax/SocialMintLLP` into Vercel, choose the `main` branch and the repository root (`./`), and keep the detected Next.js settings. Install: `npm ci`. Build: `npm run build`. The app exports static assets to `out/`.
+
+The team profiles include Tushar Singh (technical operations), Shriram Nityanandan (sales and marketing), and Gokul (videography and editing). The work section opens the two supplied Google Drive collections in new tabs. Folder access is controlled by Google Drive; ensure prospective clients have viewer access before presenting.
+
+Set `NEXT_PUBLIC_SITE_URL` to the final deployment origin for social sharing metadata. Form delivery is optional: set `NEXT_PUBLIC_FORM_ENDPOINT` to an approved endpoint and rebuild. Without it, visitors can save and download a private brief in their browser.
+
 Cinematic agency demo built with Next.js, TypeScript, Three.js / React Three Fiber, GSAP ScrollTrigger, Lenis, and Tailwind CSS.
 
 Run `npm install`, then `npm run dev`. Production: `npm run build` exports the site to `out/`.

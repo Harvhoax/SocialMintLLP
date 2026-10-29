@@ -3,7 +3,7 @@
 import {useEffect,useRef,useState} from 'react';
 import {ArrowLeft,ArrowRight,ArrowUpRight} from 'lucide-react';
 import {services} from '@/data/services';
-const photos=['running','interior','fashion','coffee','coast','orange'];
+const photos=['filming','production','team','camera','team','editing'];
 export default function ServiceCarousel({onContact}:{onContact:()=>void}){
  const stage=useRef<HTMLDivElement>(null),cards=useRef<(HTMLDivElement|null)[]>([]),background=useRef<HTMLCanvasElement>(null),controller=useRef<(step:number,absolute?:boolean)=>void>(()=>{});
  const [active,setActive]=useState(0);

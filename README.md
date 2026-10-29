@@ -1,26 +1,35 @@
 # SocialMint
 
-## Deploy for the client meeting
+Next.js + TypeScript agency website with GSAP/Lenis scrolling, 3D galleries, partner profiles, and locally hosted sample reels.
 
-Import `Harvhoax/SocialMintLLP` into Vercel, choose the `main` branch and the repository root (`./`), and keep the detected Next.js settings. Install: `npm ci`. Build: `npm run build`. The app exports static assets to `out/`.
+## Local preview
 
-The team profiles include Tushar Singh (technical operations), Shriram Nityanandan (sales and marketing), and Gokul (videography and editing). The work section opens the two supplied Google Drive collections in new tabs. Folder access is controlled by Google Drive; ensure prospective clients have viewer access before presenting.
+Run `npm ci` once, then `npm run dev`. Open http://localhost:3000.
 
-Set `NEXT_PUBLIC_SITE_URL` to the final deployment origin for social sharing metadata. Form delivery is optional: set `NEXT_PUBLIC_FORM_ENDPOINT` to an approved endpoint and rebuild. Without it, visitors can save and download a private brief in their browser.
+## Vercel deployment
 
-Cinematic agency demo built with Next.js, TypeScript, Three.js / React Three Fiber, GSAP ScrollTrigger, Lenis, and Tailwind CSS.
+Import `Harvhoax/SocialMintLLP`, select branch `main` and repository root `./`, and use the detected **Next.js** framework settings. Build command: `npm run build`. Keep the output directory at the framework default. The project uses Next.js static export; `out/` is also available for other static hosts. No server functions or secrets are required for the current features.
 
-Run `npm install`, then `npm run dev`. Production: `npm run build` exports the site to `out/`.
+Set `NEXT_PUBLIC_SITE_URL` to the final public origin when using a custom domain. Otherwise metadata uses Vercel's production project URL or deployment URL automatically. Environment changes require a rebuild.
 
-## Before launch
+## Contact
 
-- Replace concept studies in `data/projects.ts` with verified client projects and outbound URLs.
-- Add real names, portraits, and portfolio URLs in `data/partners.ts`.
-- Configure `NEXT_PUBLIC_FORM_ENDPOINT` in `.env.local` to enable delivery to an approved form endpoint. Without it, validated briefs save only in the visitor's browser and can be downloaded. Rebuild after changing environment variables.
-- No legal LLP registration claims, invented clients, prices, or performance statistics are included.
+Email: socialmintllp@gmail.com. Phone/WhatsApp: +91 93213 88129.
 
-The logo is supplied by the owner. Concept photography is from Unsplash; filenames map to photo IDs: coffee `1442512595331-e89e73853f31`, running `1538805060514-97d9cc17730c`, interior `1600210492486-724fe5c67fb0`, orange `1547514701-42782101795e`, coast `1518837695005-2083093ee35b`, fashion `1483985988355-763728e1935b`.
+Without a form endpoint, validated briefs are saved on the visitor's device and can be downloaded or opened in their email app addressed to SocialMint. Sending email is completed by the visitor. For direct form submission, configure an approved `NEXT_PUBLIC_FORM_ENDPOINT` and rebuild. No delivery credentials belong in client code.
 
-Motion references: https://tympanus.net/Tutorials/Cinematic3DScroll/ and https://franco-showcases.webflow.io/shaders-scroll . Magnet interaction inspired by React Bits: https://github.com/DavidHDev/react-bits . The page is an original branded implementation.
+## Content
 
-Reduced-motion users receive static artwork, natural scrolling, and manually scrollable project rows. The preloader is skipped on subsequent visits in the same browser session. Modals use native dialogs for focus containment and Escape dismissal.
+- Partner names, roles, portraits, portfolio and LinkedIn links: `data/partners.ts`.
+- Two Google Drive collections: `data/projects.ts`. Drive permissions control client access.
+- Reels: `components/ReelsShowcase.tsx` and `public/reels/`.
+- Reels are optimized to H.264/AAC, 720x1280, 30fps, with fast-start MP4 metadata. The original source videos are not committed.
+- Playback starts muted when at least 40% of a reel is visible and pauses offscreen or in a hidden tab. Reduced-motion and data-saving preferences disable automatic playback. Play, sound, native timeline, and fullscreen controls remain available.
+
+## Checks
+
+`npm run build` includes TypeScript checking and produces static output. `npm audit --omit=dev` audits production dependencies. Browser QA should verify autoplay, pause, sound, native media controls, mobile layout, anchor navigation and brief validation.
+
+## Credits
+
+Owner-supplied logo, partner portraits and sample reels. Supporting filmmaking imagery comes from Unsplash. Animation references include Codrops Cinematic3DScroll, Clément Grellier's 3DGradientCarousel and Franco Beltramella's shader scroll showcase. See `THIRD_PARTY_NOTICES.md` for adapted-code attribution and the distributed MIT notice.

@@ -1,19 +1,26 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
-import {ArrowUpRight} from 'lucide-react';
+import {ArrowUpRight,Linkedin} from 'lucide-react';
 import {partners} from '@/data/partners';
 
 export default function ShaderPartners({onContact}:{onContact:()=>void}){
- const root=useRef<HTMLDivElement>(null),host=useRef<HTMLDivElement>(null);const [ready,setReady]=useState(false);
- useEffect(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;let cancelled=false,cleanup=()=>{};
- import('three').then(T=>{if(cancelled||!host.current||!root.current)return;let renderer:InstanceType<typeof T.WebGLRenderer>;try{renderer=new T.WebGLRenderer({alpha:true,antialias:true});}catch{return;}renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));host.current.appendChild(renderer.domElement);
- const scene=new T.Scene(),camera=new T.OrthographicCamera(-1,1,1,-1,0,2);camera.position.z=1;const loader=new T.TextureLoader();const textures=partners.map(p=>p.photo).map(path=>{const t=loader.load(path);t.colorSpace=T.SRGBColorSpace;return t;});
- const u={a:{value:textures[0]},b:{value:textures[1]},progress:{value:0},aspect:{value:1}};
- const material=new T.ShaderMaterial({uniforms:u,vertexShader:'varying vec2 uvP;void main(){uvP=uv;gl_Position=vec4(position,1.);}',fragmentShader:`precision highp float;varying vec2 uvP;uniform sampler2D a;uniform sampler2D b;uniform float progress;uniform float aspect;float random(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}void main(){vec2 uv=uvP;vec2 crop=vec2(min(aspect,1.),min(1./aspect,1.));float wave=sin(uv.x*10.+uv.y*5.)*.09+sin(uv.y*17.)*.025;float grain=random(floor(uv*140.))*.05;float edge=progress*1.5-.25;float mask=1.-smoothstep(edge-.06,edge+.06,uv.y+wave+grain);float bend=sin(progress*3.14159)*.07;vec2 offset=vec2(sin(uv.y*13.)*bend,cos(uv.x*9.)*bend);vec4 ca=texture2D(a,(uv+offset-.5)*crop+.5);vec4 cb=texture2D(b,(uv-offset-.5)*crop+.5);gl_FragColor=mix(ca,cb,mask);}`});
- const geometry=new T.PlaneGeometry(2,2);scene.add(new T.Mesh(geometry,material));let frame=0,current=0,target=0,active=true;
- const update=()=>{if(!root.current)return;const rect=root.current.getBoundingClientRect();const panels=root.current.querySelectorAll('.shader-partner-copy');const spacing=(panels[0] as HTMLElement)?.offsetHeight||innerHeight;target=Math.max(0,Math.min(2,(-rect.top+innerHeight*.25)/spacing));};
- const resize=()=>{if(!host.current)return;renderer.setSize(host.current.clientWidth,host.current.clientHeight);u.aspect.value=host.current.clientWidth/host.current.clientHeight;update();};const ro=new ResizeObserver(resize);ro.observe(host.current);const io=new IntersectionObserver(([e])=>active=e.isIntersecting);io.observe(root.current);window.addEventListener('scroll',update,{passive:true});resize();
- const draw=()=>{frame=requestAnimationFrame(draw);if(!active||document.hidden)return;current+=(target-current)*.1;const index=Math.min(1,Math.floor(current));u.a.value=textures[index];u.b.value=textures[index+1];u.progress.value=current-index;renderer.render(scene,camera);};draw();setReady(true);
- cleanup=()=>{cancelAnimationFrame(frame);ro.disconnect();io.disconnect();window.removeEventListener('scroll',update);textures.forEach(t=>t.dispose());material.dispose();geometry.dispose();renderer.dispose();renderer.domElement.remove();};});return()=>{cancelled=true;cleanup();};},[]);
- return <section className="partners section shader-partners" id="partners"><div className="section-heading"><h2>Three minds.<br/><em>One vision.</em></h2><p>Meet the people<br/>behind your next chapter.</p></div><div className="shader-partner-layout" ref={root}><div className="shader-portrait"><img src="/team/partner-01.png" alt="Tushar Singh, Technical & Operations Lead" style={{opacity:ready?0:1}}/><div className="shader-portrait-canvas" ref={host} aria-hidden="true"/></div><div className="shader-partner-stories">{partners.map((p,i)=><article className="shader-partner-copy" key={p.name}><div className="partner-mobile-photo"><img src={p.photo||`/team/${i===1?'creative':'film'}.svg`} alt={p.name}/></div><span className="partner-index">0{i+1} / {p.role}</span><h3>{p.name}</h3><p>{p.bio}</p><p className="partner-specialty">{p.specialty}</p>{p.background?<p className="partner-background">{p.background}</p>:null}{p.portfolio?<a href={p.portfolio} target="_blank" rel="noopener noreferrer" className="partner-big-link">Explore portfolio <ArrowUpRight/></a>:<button onClick={onContact} className="partner-big-link">Let’s collaborate <ArrowUpRight/></button>}</article>)}</div></div></section>;
+ const root=useRef<HTMLDivElement>(null);
+ const [active,setActive]=useState(0);
+ useEffect(()=>{
+  const element=root.current;if(!element)return;
+  let frame=0;
+  const update=()=>{
+   frame=0;
+   const panels=Array.from(element.querySelectorAll<HTMLElement>('.shader-partner-copy'));
+   const readingLine=innerHeight*.52;
+   let nearest=0,distance=Infinity;
+   panels.forEach((panel,index)=>{const bounds=panel.getBoundingClientRect();const d=Math.abs(bounds.top+bounds.height*.5-readingLine);if(d<distance){distance=d;nearest=index;}});
+   setActive(nearest);
+  };
+  const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
+  const observer=new ResizeObserver(schedule);observer.observe(element);
+  window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);update();
+  return()=>{cancelAnimationFrame(frame);observer.disconnect();window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);};
+ },[]);
+ return <section className="partners section shader-partners calm-partners" id="partners"><div className="section-heading"><h2>Three minds.<br/><em>One vision.</em></h2><p>Meet the people<br/>behind your next chapter.</p></div><div className="shader-partner-layout" ref={root}><div className="shader-portrait calm-portrait" aria-hidden="true">{partners.map((p,i)=><img key={p.name} src={p.photo} alt="" className={active===i?'portrait-active':''} loading="eager"/>)}<span className="portrait-name">{partners[active].name}</span></div><div className="shader-partner-stories">{partners.map((p,i)=><article className="shader-partner-copy" key={p.name}><div className="partner-mobile-photo"><img src={p.photo} alt={p.name} loading="lazy"/></div><span className="partner-index">0{i+1} / {p.role}</span><h3>{p.name}</h3><p>{p.bio}</p><p className="partner-specialty">{p.specialty}</p>{p.background?<p className="partner-background">{p.background}</p>:null}<div className="partner-profile-links">{p.portfolio?<a href={p.portfolio} target="_blank" rel="noopener noreferrer" className="partner-big-link" aria-label={`Explore ${p.name}'s portfolio`}>Explore portfolio <ArrowUpRight/></a>:<button onClick={onContact} className="partner-big-link">Let’s collaborate <ArrowUpRight/></button>}<a href={p.linkedin} target="_blank" rel="noopener noreferrer" className="partner-linkedin" aria-label={`Open ${p.name}'s LinkedIn profile`}><Linkedin size={20}/>LinkedIn<ArrowUpRight size={17}/></a></div></article>)}</div></div></section>;
 }

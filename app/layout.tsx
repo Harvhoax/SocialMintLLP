@@ -1,5 +1,10 @@
 import type { Metadata } from 'next';
+import type { CSSProperties } from 'react';
+import {siteTheme, themeVariables} from '@/data/theme';
 import './globals.css';
+import './palette.css';
+import './scroll-layout.css';
+import './text-effects.css';
 const deploymentOrigin = process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
 export const metadata: Metadata = {
   metadataBase: new URL(deploymentOrigin),
@@ -9,7 +14,7 @@ export const metadata: Metadata = {
   icons: { icon: '/brand/mark.svg' },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><head><link rel="stylesheet" href="/fonts/fonts.css" /></head><body>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({'@context':'https://schema.org','@type':'Organization',name:'SocialMint',email:'socialmintllp@gmail.com',telephone:'+919321388129',description:'Social media strategy, content creation, and video production agency.'})}} /></body></html>;
+  return <html lang="en" data-palette={siteTheme.id} style={themeVariables as CSSProperties}><head><link rel="stylesheet" href="/fonts/fonts.css" /></head><body>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({'@context':'https://schema.org','@type':'Organization',name:'SocialMint',email:'socialmintllp@gmail.com',telephone:'+919321388129',description:'Social media strategy, content creation, and video production agency.'})}} /></body></html>;
 }
 
 

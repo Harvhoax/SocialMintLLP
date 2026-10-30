@@ -1,0 +1,47 @@
+/* Viewport framing for the measured scroll stops. No fixed content cropping. */
+html { scroll-padding-top:0; }
+.manifesto,.process { min-height:100svh; }
+footer.section { min-height:0; padding-block:48px 28px; }
+footer .footer-top { padding-bottom:30px; }
+footer .footer-bottom { padding-top:22px; }
+@media(max-width:700px) {
+  footer.section { padding-block:36px 24px; }
+  footer .footer-top { padding-bottom:24px; }
+  footer .footer-bottom { padding-top:20px; }
+}
+
+/* Keep the whole services stage and toolbar visible at its gallery stop. */
+.gradient-carousel { height:calc(100svh - 190px); min-height:300px; max-height:790px; }
+.gradient-card { width:min(360px,26vw,calc((100svh - 260px)*.68)); }
+.carousel-toolbar { padding-block:18px; }
+
+/* Larger film frames retain their full aspect ratio; the section grows to fit. */
+.circular-films { min-height:100svh; padding-top:100px; padding-bottom:15px; }
+.circular-stage { height:calc((100svh - 220px)*1.2); min-height:360px; max-height:none; }
+.circular-topline { min-height:30px; }
+.circular-bottom { padding-top:8px; padding-bottom:0; min-height:75px; }
+.circular-caption { padding:5px 6px; }
+.circular-caption > span { display:none; }
+.circular-caption strong { font-size:1em; line-height:1.16; letter-spacing:-.5px; }
+.circular-fallback .circular-caption > span { display:block; }
+.circular-fallback .circular-stage { height:auto; }
+.circular-fallback .circular-labels { gap:16px; }
+.circular-fallback .circular-caption { flex-basis:min(336px,65.6vw); }
+.circular-fallback-image,.circular-initial { border:1px solid rgba(var(--brand-rgb),.45); border-radius:14px; background:var(--panel); }
+
+@media(max-width:700px) {
+  .gradient-card { width:min(72vw,310px,calc((100svh - 260px)*.68)); }
+  .gradient-carousel { height:calc(100svh - 190px); min-height:330px; }
+  .circular-films { padding-top:90px; padding-bottom:15px; }
+  .circular-topline { min-height:65px; }
+  .circular-stage { height:calc((100svh - 280px)*1.2); min-height:396px; max-height:none; }
+  .circular-bottom { min-height:110px; gap:12px; }
+  .circular-current > span { display:inline; }
+  .circular-current p { display:inline; margin:0 0 0 12px; }
+  .circular-caption strong { font-size:1em; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .circular-films { min-height:0; }
+  .circular-fallback .circular-stage { min-height:0; }
+}

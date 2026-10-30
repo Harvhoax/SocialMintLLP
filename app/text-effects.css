@@ -1,0 +1,29 @@
+/* Text is visible without JavaScript; motion begins only inside the viewport. */
+.motion-sr { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip-path:inset(50%)!important; white-space:nowrap!important; border:0!important; }
+.motion-word,.morph-word { display:inline-block; white-space:nowrap; }
+.motion-piece,.motion-letter,.morph-letter { display:inline-block; }
+.motion-vapor { display:inline-block; }
+.motion-vapor .motion-word { overflow:visible; }
+.motion-letter { transform-origin:50% 70%; }
+.morph-space { white-space:pre; }
+.motion-morph { display:block; }
+.motion-ghost { display:inline; }
+.ghost-caret { display:none; width:1px; height:.85em; margin-left:4px; background:var(--accent-soft); vertical-align:-.03em; }
+.motion-ghost[data-writing] .ghost-caret { display:inline-block; animation:ghost-caret 600ms steps(1,end) 3; }
+@keyframes ghost-caret { 50% { opacity:0; } }
+.motion-swap { display:inline-block; white-space:nowrap; }
+.swap-letter { position:relative; display:inline-block; perspective:300px; }
+.swap-front,.swap-back { display:inline-block; backface-visibility:hidden; transform-origin:50% 50% -.45em; transition:transform 480ms cubic-bezier(.22,1,.36,1); transition-delay:var(--letter-delay,0ms); }
+.swap-back { position:absolute; left:0; top:0; transform:rotateX(-90deg); }
+@media(hover:hover) and (prefers-reduced-motion:no-preference) {
+ :is(a,button):hover .swap-front { transform:rotateX(90deg); }
+ :is(a,button):hover .swap-back { transform:rotateX(0); }
+}
+@media(prefers-reduced-motion:no-preference) {
+ :is(a,button):focus-visible .swap-front { transform:rotateX(90deg); }
+ :is(a,button):focus-visible .swap-back { transform:rotateX(0); }
+}
+@media(prefers-reduced-motion:reduce) {
+ .ghost-caret,.swap-back { display:none!important; }
+ .motion-piece,.motion-letter,.morph-letter,.swap-front { transform:none!important; opacity:1!important; filter:none!important; transition:none!important; }
+}

@@ -1,0 +1,223 @@
+/* Palette C — role-based colors; layout, media and motion stay in globals.css. */
+html[data-palette] { color-scheme: dark; }
+html[data-palette] body { background: var(--bg); color: var(--text); }
+html[data-palette] :is(button, a, input, textarea):focus-visible {
+  outline-color: var(--accent-soft);
+}
+html[data-palette] :is(.loader, footer, .manifesto, .process, .work-section) {
+  background: var(--bg);
+}
+html[data-palette] .progress,
+html[data-palette] .loader i {
+  background: linear-gradient(90deg, var(--mint) 15%, var(--accent-soft) 70%, var(--accent));
+}
+html[data-palette] .skip,
+html[data-palette] .primary,
+html[data-palette] .contact .primary,
+html[data-palette] .nav-cta {
+  background: var(--mint);
+  color: var(--bg);
+  border-color: transparent;
+}
+html[data-palette] :is(.primary, .contact .primary, .nav-cta):hover {
+  background: color-mix(in srgb, var(--mint) 82%, var(--text));
+  color: var(--bg);
+}
+html[data-palette] header {
+  background: rgba(var(--bg-rgb), .9);
+  border-color: var(--line);
+}
+html[data-palette] nav a { color: var(--dim); }
+html[data-palette] nav a:hover,
+html[data-palette] .footer-bottom button:hover { color: var(--accent-soft); }
+html[data-palette] .menu-toggle { color: var(--text); }
+html[data-palette] :is(.section-label, .eyebrow, .cinema-meta, .cinema-bottom) {
+  color: var(--dim);
+}
+html[data-palette] .section-label svg,
+html[data-palette] .little-mark { color: var(--accent); }
+html[data-palette] .pills span {
+  color: var(--accent-soft);
+  background: rgba(var(--accent-rgb), .045);
+  border-color: rgba(var(--accent-rgb), .19);
+}
+
+/* One signature mint-to-coral light treatment, kept behind the imagery. */
+html[data-palette] .cinema {
+  background:
+    radial-gradient(ellipse at 78% 39%, rgba(var(--accent-rgb), .075), transparent 47%),
+    radial-gradient(ellipse at 43% 72%, rgba(var(--brand-rgb), .06), transparent 50%),
+    var(--bg);
+}
+html[data-palette] .cinema-opening p {
+  color: var(--dim);
+  background: rgba(var(--bg-rgb), .87);
+}
+html[data-palette] .cinema-start,
+html[data-palette] .cinema-second button {
+  background: var(--mint);
+  color: var(--bg);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 15px 22px;
+}
+html[data-palette] :is(.cinema-start, .cinema-second button):hover {
+  background: color-mix(in srgb, var(--mint) 82%, var(--text));
+}
+html[data-palette] .cinema-second {
+  background: rgba(var(--bg-rgb), .52);
+}
+html[data-palette] .cinema-second p { color: var(--text); }
+html[data-palette] .cinema-progress { background: var(--accent); }
+
+/* Service gallery: mint depth with warm secondary accents. */
+html[data-palette] :is(.deliverables, .services) {
+  background: var(--panel);
+  color: var(--text);
+  border-block: 1px solid var(--line);
+}
+html[data-palette] .deliverables-heading > span,
+html[data-palette] .deliverable-index { color: var(--accent-deep); }
+html[data-palette] .deliverables-heading h2 em { color: var(--accent-soft); }
+html[data-palette] .deliverables-heading > p,
+html[data-palette] .deliverable-details p,
+html[data-palette] .carousel-hint { color: var(--dim); }
+html[data-palette] .gradient-card {
+  background: var(--elevated);
+  box-shadow: none;
+  border: 1px solid var(--line);
+}
+html[data-palette] .gradient-card-label {
+  background: linear-gradient(transparent, rgba(var(--bg-rgb), .97));
+  color: var(--text);
+}
+html[data-palette] .gradient-card-label span { color: var(--accent-soft); }
+html[data-palette] .carousel-toolbar > button {
+  color: var(--text);
+  background: var(--panel);
+  border-color: var(--line);
+}
+html[data-palette] .carousel-toolbar > button:hover {
+  color: var(--accent-soft);
+  background: var(--elevated);
+  border-color: var(--accent);
+}
+html[data-palette] .carousel-dots button:hover { background: var(--elevated); }
+html[data-palette] .carousel-dots span { background: var(--dim); opacity: .45; }
+html[data-palette] .carousel-dots button[aria-pressed=true] span {
+  background: var(--accent-deep); opacity: 1;
+}
+html[data-palette] .deliverable-details li {
+  color: var(--accent-soft);
+  border-color: rgba(var(--accent-rgb), .2);
+  background: rgba(var(--accent-rgb), .035);
+}
+html[data-palette] .deliverable-cta {
+  background: var(--mint);
+  color: var(--bg);
+  border: 0;
+  border-radius: 5px;
+  padding: 15px 22px;
+}
+html[data-palette] .deliverable-cta:hover {
+  background: color-mix(in srgb, var(--mint) 82%, var(--text));
+}
+html[data-palette] .process-number { color: var(--accent-deep); border-color: var(--line); }
+html[data-palette] .process-number svg { color: var(--accent-soft); }
+
+/* Circular films: dark stage, readable captions, coral secondary controls. */
+html[data-palette] .circular-films { background: var(--bg); color: var(--text); }
+html[data-palette] .circular-topline h2 { color: var(--text); }
+html[data-palette] .circular-topline h2 span { color: var(--accent-soft); }
+html[data-palette] .circular-topline > span,
+html[data-palette] .circular-current p { color: var(--dim); }
+html[data-palette] .circular-caption { color: var(--text); }
+html[data-palette] .circular-caption > span,
+html[data-palette] .circular-current > span { color: var(--accent-deep); }
+html[data-palette] .circular-caption:hover strong { color: var(--accent-soft); }
+html[data-palette] .circular-controls button {
+  background: var(--panel); color: var(--text); border-color: var(--line);
+}
+html[data-palette] .circular-controls button:hover {
+  background: var(--elevated); color: var(--accent-soft); border-color: var(--accent);
+}
+html[data-palette] .circular-controls button:nth-child(2) {
+  background: var(--mint); color: var(--bg); border-color: transparent;
+}
+html[data-palette] .circular-controls .quality-active {
+  background: var(--accent-soft); color: var(--bg); border-color: transparent;
+}
+html[data-palette] .circular-stage:focus-visible,
+html[data-palette] .circular-caption:focus-visible,
+html[data-palette] .circular-controls button:focus-visible { outline-color: var(--accent-soft); }
+html[data-palette] :is(dialog, .circular-player-dialog) {
+  background: var(--panel); color: var(--text); border-color: var(--line);
+}
+html[data-palette] dialog::backdrop { background: rgba(var(--bg-rgb), .85); }
+html[data-palette] :is(.dialog-close, .circular-player-close) {
+  background: var(--elevated); color: var(--accent-soft); border-color: var(--line);
+}
+html[data-palette] .circular-player-dialog video { background: var(--bg); }
+html[data-palette] .mobile-nav button { border-color: var(--line); }
+html[data-palette] .mobile-nav small { color: var(--accent); }
+
+/* People: warm editorial labels and clear brand actions. */
+html[data-palette] .shader-partners { background: var(--panel); }
+html[data-palette] .shader-partners .section-heading em { color: var(--accent-soft); }
+html[data-palette] .calm-portrait { background: var(--elevated); }
+html[data-palette] .portrait-name {
+  color: var(--text);
+  background: linear-gradient(transparent, rgba(var(--bg-rgb), .9));
+}
+html[data-palette] .partner-index { color: var(--accent-deep); }
+html[data-palette] .shader-partner-copy :is(.partner-specialty, .partner-background) {
+  color: var(--dim);
+}
+html[data-palette] .partner-big-link {
+  color: var(--mint); border-color: rgba(var(--brand-rgb), .3);
+}
+html[data-palette] .partner-big-link:hover { border-color: var(--mint); }
+html[data-palette] .partner-linkedin { color: var(--accent-soft); }
+html[data-palette] .partner-linkedin:hover { color: var(--accent); }
+
+/* Contact: elevated form, mint submit, peach links and selected chips. */
+html[data-palette] .contact {
+  color: var(--text);
+  background: radial-gradient(ellipse at 0 100%, rgba(var(--accent-rgb), .055), transparent 55%), var(--bg);
+  border-color: var(--line);
+}
+html[data-palette] .contact:before {
+  border-color: rgba(var(--accent-rgb), .12);
+  box-shadow: 0 0 0 45px rgba(var(--accent-rgb), .025), 0 0 0 90px rgba(var(--accent-rgb), .015);
+}
+html[data-palette] .contact .section-label,
+html[data-palette] .contact p,
+html[data-palette] .contact .form-note { color: var(--dim); }
+html[data-palette] .contact em { color: var(--accent-soft); }
+html[data-palette] .brief-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+html[data-palette] .brief-heading > svg { color: var(--accent-deep); }
+html[data-palette] .contact :is(input, textarea) {
+  color: var(--text); border-color: rgba(var(--brand-rgb), .24); caret-color: var(--mint);
+}
+html[data-palette] .contact :is(input, textarea)::placeholder { color: var(--dim); }
+html[data-palette] .contact :is(input, textarea):focus { border-color: var(--accent); }
+html[data-palette] .service-chips button {
+  color: var(--dim); background: transparent; border-color: var(--line);
+}
+html[data-palette] .service-chips button:hover { color: var(--text); border-color: var(--accent); }
+html[data-palette] .contact .service-chips button[aria-pressed=true] {
+  color: var(--accent-soft);
+  background: rgba(var(--accent-rgb), .09);
+  border-color: rgba(var(--accent-rgb), .55);
+}
+html[data-palette] .direct-contact a { color: var(--text); border-color: var(--line); }
+html[data-palette] .direct-contact a svg { color: var(--accent-soft); }
+html[data-palette] .direct-contact a:hover { color: var(--accent-soft); border-color: var(--accent); }
+html[data-palette] .contact .form-error { color: var(--accent); }
+html[data-palette] .contact .success > svg { color: var(--mint); }
+html[data-palette] .top-button { background: var(--panel); border-color: var(--line); color: var(--accent-soft); }
+html[data-palette] .top-button:hover { background: var(--elevated); border-color: var(--accent); }

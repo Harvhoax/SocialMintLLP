@@ -1,20 +1,23 @@
 import type { Metadata } from 'next';
 import type { CSSProperties } from 'react';
 import {siteTheme, themeVariables} from '@/data/theme';
+import {site} from '@/data/site';
+import {pageMetadata} from '@/lib/seo';
 import './globals.css';
 import './palette.css';
 import './scroll-layout.css';
 import './text-effects.css';
-const deploymentOrigin = process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+import './discovery.css';
 export const metadata: Metadata = {
-  metadataBase: new URL(deploymentOrigin),
-  title: 'SocialMint — Social Media Agency | Reels, Video, Growth',
-  description: 'Strategy, stories, and social that grows with you. SocialMint plans, shoots, designs, and runs your content with one consistent creative standard.',
-  openGraph: { title: 'SocialMint — A fresh take on social.', description: 'We turn attention into growth. A strategy-led creative social media agency.', images: [{url:'/brand/logo.png',width:1296,height:1213,alt:'SocialMint social media agency'}] },
+  ...pageMetadata(site.title, site.description, '/'),
+  metadataBase: new URL(site.url),
+  applicationName: site.name,
+  category: 'Social media and video production',
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined, other: process.env.BING_SITE_VERIFICATION ? {'msvalidate.01': process.env.BING_SITE_VERIFICATION} : undefined },
   icons: { icon: '/brand/mark.svg' },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-palette={siteTheme.id} style={themeVariables as CSSProperties}><head><link rel="stylesheet" href="/fonts/fonts.css" /></head><body>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({'@context':'https://schema.org','@type':'Organization',name:'SocialMint',email:'socialmintllp@gmail.com',telephone:'+919321388129',description:'Social media strategy, content creation, and video production agency.'})}} /></body></html>;
+  return <html lang="en" data-palette={siteTheme.id} style={themeVariables as CSSProperties}><head><link rel="stylesheet" href="/fonts/fonts.css" /><link rel="preload" href="/fonts/font-0.woff2" as="font" type="font/woff2" crossOrigin="anonymous" /></head><body><noscript><style>{'.loader,.progress,.gradient-carousel,.carousel-toolbar,.circular-stage,.circular-controls{display:none!important}.cinema{height:100svh}.cinema-sticky{position:relative}.cinema-second{display:none}.cinema-opening{visibility:visible!important;opacity:1!important}'}</style></noscript>{children}</body></html>;
 }
 
 

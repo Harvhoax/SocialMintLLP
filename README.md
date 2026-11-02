@@ -10,16 +10,19 @@ Run `npm ci` once, then `npm run dev`. Open http://localhost:3000.
 
 Import `Harvhoax/SocialMintLLP`, select branch `main` and repository root `./`, and use the detected **Next.js** framework settings. Build command: `npm run build`. Keep the output directory at the framework default. The project uses Next.js static export; `out/` is also available for other static hosts. No server functions or secrets are required for the current features.
 
-Set `NEXT_PUBLIC_SITE_URL` to the final public origin when using a custom domain. Otherwise metadata uses Vercel's production project URL or deployment URL automatically. Environment changes require a rebuild.
+The public origin is `https://socialmintstudio.com`, configured in `data/site.ts`. Canonical and social URLs always use this domain, including during local review. Vercel preview/development builds carry `noindex`; production builds are indexable. Optional Google/Bing HTML verification tokens are described in `.env.example` and require a rebuild. DNS verification does not require code tokens. See [SEO-LAUNCH.md](SEO-LAUNCH.md) for domain setup, search-console verification and the launch checks that require account access.
 
 ## Contact
 
-Email: socialmintllp@gmail.com. Phone/WhatsApp: +91 93213 88129.
+Email: info@socialmintstudio.com. Phone/WhatsApp: +91 93213 88129.
 
-Without a form endpoint, validated briefs are saved on the visitor's device and can be downloaded or opened in their email app addressed to SocialMint. Sending email is completed by the visitor. For direct form submission, configure an approved `NEXT_PUBLIC_FORM_ENDPOINT` and rebuild. No delivery credentials belong in client code.
+The enquiry form needs no database, backend or API key. It validates input locally, shows the full enquiry for review, then opens a prepared WhatsApp message or email. The visitor completes sending in that app. Long enquiries use copy/paste rather than truncation; copy and plain-text download fallbacks are included. Values remain in this tab's memory only, and Edit/Clear controls are available. No form endpoint is used.
+
 
 ## Content
 
+- Search and answer-engine discovery: the cinematic homepage links to `/services`, six detailed service pages, `/work` and fourteen native film watch pages. These routes are rendered as static HTML without gallery or animation JavaScript. Titles, descriptions, self canonicals, social previews, Organization/Person/Service and breadcrumb data, `robots.txt`, and an image/video-aware sitemap share one production identity. Mumbai and India are confirmed target markets; no office address, client results, reviews or pricing are invented. Questions and answers are visible in native HTML details. A film only emits `VideoObject` after its actual first-publication date is entered in `data/reel-details.ts`; the video sitemap already includes every watch page and file.
+- Fonts: local WOFF2 versions reduce the combined font variant size from 674,920 to 229,240 bytes (66%); existing TTF fallbacks remain available. Only the body font is preloaded; other weights load when used. The homepage's artificial loader wait is 450ms instead of 1,400ms, and below-fold partner portraits load lazily.
 - Text motion: original SocialMint implementations in `components/ui/TextEffects.tsx`, `lib/text-motion.ts` and `app/text-effects.css`. The hero gets a one-time vapor entrance after loading; section headings reveal by word; shared letters glide between service titles; the contact prompt uses a one-time ghost completion; selected links and buttons flip letters on hover/focus. Text remains readable without JavaScript, visual duplicates are hidden from assistive technology, and reduced-motion preferences disable the effects. No React Bits Pro code or license is required.
 - Active theme: Palette A (mint + coral, with peach details). `data/theme.ts` is the shared color source for CSS variables, the service canvas and WebGL accents. `app/palette.css` maps colors to interface roles. Service SVG artwork carries the matching warm accent inks.
 - Page scrolling uses continuous Lenis wheel smoothing with native touch scrolling. Section alignment is optional and limited to 40px in the last scroll direction, after both input and smoothing stop. It is interruptible and never locks or drops user input. Header, fonts and viewport changes are measured by `lib/section-scroll.ts`. Reduced motion keeps native page scrolling.
@@ -34,8 +37,12 @@ Without a form endpoint, validated briefs are saved on the visitor's device and 
 
 ## Checks
 
-`npm run build` includes TypeScript checking and produces static output. `npm audit --omit=dev` audits production dependencies. Browser QA should verify autoplay, pause, sound, native media controls, mobile layout, anchor navigation and brief validation.
+`npm run build` includes TypeScript checking and produces static output. Run `npm run check:seo` after a build to check every sitemap URL, canonical, unique title/description, native video source, local link/asset, JSON-LD, social preview and crawl configuration. `npm audit --omit=dev` audits production dependencies. Browser QA should verify autoplay, pause, sound, native media controls, mobile layout, anchor navigation and brief validation. Real-user Core Web Vitals and public indexing must be measured after domain launch.
 
 ## Credits
 
 Owner-supplied logo, partner portraits and sample reels. Supporting filmmaking imagery comes from Unsplash. The six service artworks are original SVG interface illustrations with owner-supplied stills and supporting camera photography. Animation references include Codrops Cinematic3DScroll, Clément Grellier's 3DGradientCarousel and Franco Beltramella's shader scroll showcase. See `THIRD_PARTY_NOTICES.md` for adapted-code attribution and the distributed MIT notice.
+
+## Security review
+
+See [SECURITY-REVIEW.md](SECURITY-REVIEW.md) for findings, fixes and deployment checks. `npm run build` runs the form/security checks and the exported-page SEO audit automatically. `npm run check:security` also runs the security checks independently. If a submission backend is introduced later, it will require its own server validation and abuse controls.

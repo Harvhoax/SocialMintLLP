@@ -2,7 +2,7 @@
 
 Owner account: **tusharsingh@socialmintstudio.com**. Project: **socialmintstudio**.
 
-Current state (3 November 2026): the static website is uploaded as a production deployment, but **production and previews remain Private at the owner's explicit request**. Anonymous visitors receive Netlify's authentication gate. No DNS records or public visibility settings have been changed. The current upload is manual; GitHub continuous deployment is not yet connected.
+Current state (3 November 2026): **production is Public and previews remain Private**, as approved by the owner. All 23 content pages were verified without authentication, with security headers and correct indexing. Unknown routes returned 404, and video range requests returned 206. DNS/custom-domain setup is intentionally deferred until the owner is ready. The current upload is manual; GitHub continuous deployment is not yet connected.
 
 - Public hosting URL: https://socialmintstudio.netlify.app
 - Dashboard: https://app.netlify.com/projects/socialmintstudio

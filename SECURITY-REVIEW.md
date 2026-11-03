@@ -54,3 +54,9 @@ References: [OWASP HTML5 security](https://cheatsheetseries.owasp.org/cheatsheet
 - Corrected and redeployed a deep-route redirect loop caused by slash-only normalization rules. Fresh deployed watch and service URLs opened correctly. A regression check rejects redirects that differ only by the trailing slash.
 - There were no CSP violations in the captured homepage warning/error log. One MutationObserver error was observed without a source URL; form and video functionality passed, but the error has not been attributed or claimed fixed. Review this again when testing the public launch; Netlify also injects its own private-site HUD script.
 - Automated unauthenticated 23-page/header/range tests cannot inspect application responses while the platform's private-access gate is enabled. The artifact's policy, hashes, routes, privacy and SEO checks passed locally; public CDN header/range checks remain a launch task. DNS/custom-domain cutover and public search indexing remain pending by design while the site stays private.
+
+### Public production verification — 3 November 2026
+
+After the owner explicitly requested public access, production was made Public through Netlify's dashboard. Previews remain Private. No domain/DNS changes were made; the owner will connect the custom domain later.
+
+Unauthenticated checks passed on all 23 content pages: HTTP 200, DENY framing, nosniff, the generated hash-based CSP, and no unintended noindex directive. Three nonexistent paths returned HTTP 404. robots.txt, sitemap.xml and the PNG social image returned 200 with appropriate content types. A preview MP4 byte-range request returned HTTP 206, exactly 1,024 bytes, a valid Content-Range and the expected finite cache policy. The separate draft URL still returned 401, confirming preview protection. The dashboard displayed "Your project is public" and the public homepage rendered successfully.

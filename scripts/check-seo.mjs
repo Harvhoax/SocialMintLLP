@@ -3,6 +3,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { isPreviewDeployment } from '../lib/deploy-context.mjs';
 
+const media = JSON.parse(readFileSync(new URL('../data/media-manifest.json', import.meta.url), 'utf8'));
 const out = join(process.cwd(), 'out');
 const origin = 'https://socialmintstudio.com';
 const read = path => readFileSync(join(out, path), 'utf8');
@@ -95,8 +96,8 @@ for (const url of urls) {
   if (path.startsWith('/work/')) {
     assert.match(html, /<video[^>]*controls=""[^>]*preload="none"/, `${path}: native player without preload`);
     const slug = path.split('/').at(-1);
-    assert.match(html, new RegExp(`/reels/${slug}-preview\\.mp4`), `${path}: stable video source in HTML`);
-    assert.match(html, new RegExp(`/reels/${slug}\\.jpg`), `${path}: stable poster`);
+    assert.ok(html.includes(media.previews[slug].src), `${path}: stable optimized video source in HTML`);
+    assert.ok(html.includes(media.assets[`/reels/${slug}.jpg`]), `${path}: optimized stable poster`);
   }
 }
 const reachable = new Set();

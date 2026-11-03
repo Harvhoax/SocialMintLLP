@@ -1,0 +1,320 @@
+{
+  "images": [
+    {
+      "source": "/hero/architecture.jpg",
+      "output": "/media/hero/architecture.f38fd976f3ab.webp",
+      "before": 145197,
+      "after": 25214
+    },
+    {
+      "source": "/hero/brand-film.jpg",
+      "output": "/media/hero/brand-film.ab2836965b0e.webp",
+      "before": 91034,
+      "after": 16368
+    },
+    {
+      "source": "/hero/brand-product.jpg",
+      "output": "/media/hero/brand-product.aba9d6f50a0c.webp",
+      "before": 59193,
+      "after": 9144
+    },
+    {
+      "source": "/hero/camera-detail.jpg",
+      "output": "/media/hero/camera-detail.a7f5c66cd4df.webp",
+      "before": 154110,
+      "after": 19382
+    },
+    {
+      "source": "/hero/celebration.jpg",
+      "output": "/media/hero/celebration.d607551cfc6e.webp",
+      "before": 156069,
+      "after": 40062
+    },
+    {
+      "source": "/hero/city-story.jpg",
+      "output": "/media/hero/city-story.6c150cd55eef.webp",
+      "before": 140021,
+      "after": 35636
+    },
+    {
+      "source": "/hero/edit-suite.jpg",
+      "output": "/media/hero/edit-suite.af9e08792dc4.webp",
+      "before": 100627,
+      "after": 20542
+    },
+    {
+      "source": "/hero/founder-story.jpg",
+      "output": "/media/hero/founder-story.6956f3f50e98.webp",
+      "before": 138668,
+      "after": 28922
+    },
+    {
+      "source": "/hero/hospitality.jpg",
+      "output": "/media/hero/hospitality.b7a66ebb0079.webp",
+      "before": 72952,
+      "after": 11116
+    },
+    {
+      "source": "/hero/on-set.jpg",
+      "output": "/media/hero/on-set.993ba082f181.webp",
+      "before": 183551,
+      "after": 21984
+    },
+    {
+      "source": "/hero/social-creator.jpg",
+      "output": "/media/hero/social-creator.02ff207b85a0.webp",
+      "before": 84283,
+      "after": 13434
+    },
+    {
+      "source": "/hero/studio-light.jpg",
+      "output": "/media/hero/studio-light.5fb605fa7239.webp",
+      "before": 160673,
+      "after": 22978
+    },
+    {
+      "source": "/team/partner-01.png",
+      "output": "/media/team/partner-01.4d200122d9cc.webp",
+      "before": 554217,
+      "after": 37966
+    },
+    {
+      "source": "/team/partner-02.jpg",
+      "output": "/media/team/partner-02.bf86e37a6bac.webp",
+      "before": 131493,
+      "after": 37620
+    },
+    {
+      "source": "/team/partner-03.jpg",
+      "output": "/media/team/partner-03.d97e1b04a2d3.webp",
+      "before": 107982,
+      "after": 28992
+    },
+    {
+      "source": "/reels/cafe-story.jpg",
+      "output": "/media/reels/cafe-story.6c5323f40426.webp",
+      "before": 62072,
+      "after": 44268
+    },
+    {
+      "source": "/reels/cafe.jpg",
+      "output": "/media/reels/cafe.f744029d590f.webp",
+      "before": 25481,
+      "after": 15964
+    },
+    {
+      "source": "/reels/dubai-real-estate.jpg",
+      "output": "/media/reels/dubai-real-estate.7ca2f7c9e696.webp",
+      "before": 87879,
+      "after": 26394
+    },
+    {
+      "source": "/reels/electrent.jpg",
+      "output": "/media/reels/electrent.731fa6510bbe.webp",
+      "before": 19398,
+      "after": 9030
+    },
+    {
+      "source": "/reels/founder-documentary.jpg",
+      "output": "/media/reels/founder-documentary.53448c290442.webp",
+      "before": 42478,
+      "after": 29728
+    },
+    {
+      "source": "/reels/kumarland.jpg",
+      "output": "/media/reels/kumarland.81a6939948cd.webp",
+      "before": 49742,
+      "after": 33324
+    },
+    {
+      "source": "/reels/mysastiflight.jpg",
+      "output": "/media/reels/mysastiflight.26c3778e3509.webp",
+      "before": 62588,
+      "after": 40894
+    },
+    {
+      "source": "/reels/short-form-edit.jpg",
+      "output": "/media/reels/short-form-edit.efa345ebfba3.webp",
+      "before": 32701,
+      "after": 18764
+    },
+    {
+      "source": "/reels/social-edit-01.jpg",
+      "output": "/media/reels/social-edit-01.cd41990f53dd.webp",
+      "before": 6902,
+      "after": 3876
+    },
+    {
+      "source": "/reels/social-edit-02.jpg",
+      "output": "/media/reels/social-edit-02.fafa9e32499b.webp",
+      "before": 28179,
+      "after": 17992
+    },
+    {
+      "source": "/reels/socialcox.jpg",
+      "output": "/media/reels/socialcox.c8c458f57663.webp",
+      "before": 85273,
+      "after": 30548
+    },
+    {
+      "source": "/reels/star-wedding.jpg",
+      "output": "/media/reels/star-wedding.7cb8e573bd97.webp",
+      "before": 21306,
+      "after": 11784
+    },
+    {
+      "source": "/reels/supercar-fest.jpg",
+      "output": "/media/reels/supercar-fest.43284e9d02ec.webp",
+      "before": 27928,
+      "after": 9244
+    },
+    {
+      "source": "/reels/videokart.jpg",
+      "output": "/media/reels/videokart.3f685dac14c1.webp",
+      "before": 27141,
+      "after": 13500
+    },
+    {
+      "source": "/brand/logo.png",
+      "output": "/media/brand/logo.53865fba942b.webp",
+      "before": 421355,
+      "after": 18776
+    },
+    {
+      "source": "/services/handling.svg",
+      "output": "/media/services/handling.cd061c1eb6b0.svg",
+      "before": 3578,
+      "after": 3578
+    },
+    {
+      "source": "/services/optimization.svg",
+      "output": "/media/services/optimization.e6339d12afb2.svg",
+      "before": 1887,
+      "after": 1890
+    },
+    {
+      "source": "/services/posts.svg",
+      "output": "/media/services/posts.5538eaa2ca09.svg",
+      "before": 2091,
+      "after": 2094
+    },
+    {
+      "source": "/services/reels.svg",
+      "output": "/media/services/reels.fa1e33ff58a1.svg",
+      "before": 38658,
+      "after": 8034
+    },
+    {
+      "source": "/services/shooting.svg",
+      "output": "/media/services/shooting.3e637504a1bc.svg",
+      "before": 239170,
+      "after": 14910
+    },
+    {
+      "source": "/services/thumbnails.svg",
+      "output": "/media/services/thumbnails.62e9dec0a521.svg",
+      "before": 118693,
+      "after": 17865
+    }
+  ],
+  "videos": [
+    {
+      "source": "/reels/cafe-preview.mp4",
+      "output": "/media/reels/cafe-sd.20e1d5f9958a.mp4",
+      "before": 2320936,
+      "after": 1558318,
+      "duration": 31.717007
+    },
+    {
+      "source": "/reels/cafe-story-preview.mp4",
+      "output": "/media/reels/cafe-story-sd.0888e1affb0f.mp4",
+      "before": 2308886,
+      "after": 1406301,
+      "duration": 27.875
+    },
+    {
+      "source": "/reels/dubai-real-estate-preview.mp4",
+      "output": "/media/reels/dubai-real-estate-sd.af4ecb7e25fc.mp4",
+      "before": 1715034,
+      "after": 1234197,
+      "duration": 34.806712
+    },
+    {
+      "source": "/reels/electrent-preview.mp4",
+      "output": "/media/reels/electrent-sd.0454c0bc2c1e.mp4",
+      "before": 1035802,
+      "after": 765417,
+      "duration": 44.466213
+    },
+    {
+      "source": "/reels/founder-documentary-preview.mp4",
+      "output": "/media/reels/founder-documentary-sd.6f9c35025261.mp4",
+      "before": 1718202,
+      "after": 1077980,
+      "duration": 25.797007
+    },
+    {
+      "source": "/reels/kumarland-preview.mp4",
+      "output": "/media/reels/kumarland-sd.5fb16baec11b.mp4",
+      "before": 3613314,
+      "after": 2183579,
+      "duration": 43.5
+    },
+    {
+      "source": "/reels/mysastiflight-preview.mp4",
+      "output": "/media/reels/mysastiflight-sd.2934e2bd6258.mp4",
+      "before": 5213872,
+      "after": 3340705,
+      "duration": 70.263719
+    },
+    {
+      "source": "/reels/short-form-edit-preview.mp4",
+      "output": "/media/reels/short-form-edit-sd.602c0a4c92b4.mp4",
+      "before": 1121741,
+      "after": 742659,
+      "duration": 15.348005
+    },
+    {
+      "source": "/reels/social-edit-01-preview.mp4",
+      "output": "/media/reels/social-edit-01-sd.67c1c7a665d1.mp4",
+      "before": 2283892,
+      "after": 1510277,
+      "duration": 31.277007
+    },
+    {
+      "source": "/reels/social-edit-02-preview.mp4",
+      "output": "/media/reels/social-edit-02-sd.28bb5ec7d8da.mp4",
+      "before": 2419108,
+      "after": 1596599,
+      "duration": 35.200998
+    },
+    {
+      "source": "/reels/socialcox-preview.mp4",
+      "output": "/media/reels/socialcox-sd.37fdca3730a2.mp4",
+      "before": 2414643,
+      "after": 1499279,
+      "duration": 29.675011
+    },
+    {
+      "source": "/reels/star-wedding-preview.mp4",
+      "output": "/media/reels/star-wedding-sd.c063c54cf581.mp4",
+      "before": 3055731,
+      "after": 2076999,
+      "duration": 46.708333
+    },
+    {
+      "source": "/reels/supercar-fest-preview.mp4",
+      "output": "/media/reels/supercar-fest-sd.da712616b3f2.mp4",
+      "before": 1813634,
+      "after": 1162181,
+      "duration": 23.846939
+    },
+    {
+      "source": "/reels/videokart-preview.mp4",
+      "output": "/media/reels/videokart-sd.60ca43636563.mp4",
+      "before": 4381838,
+      "after": 2924928,
+      "duration": 62.541667
+    }
+  ]
+}

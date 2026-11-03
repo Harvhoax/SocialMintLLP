@@ -1,0 +1,18 @@
+{
+  "scenario": "Cold homepage then Work navigation, no manual playback; Chromium IAB, local static export, Brotli level 5",
+  "baseline": {
+    "requests": 53,
+    "responseBytes": 6069696,
+    "mp4Requests": 1
+  },
+  "optimized": {
+    "requests": 43,
+    "responseBytes": 1012563,
+    "mp4Requests": 0
+  },
+  "warm": {
+    "requests": 3,
+    "responseBytes": 14203,
+    "mediaRequests": 0
+  }
+}

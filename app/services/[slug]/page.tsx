@@ -1,3 +1,4 @@
+import { reelPoster } from '@/data/media';
 import { notFound } from 'next/navigation';
 import ContentFrame from '@/components/ContentFrame';
 import StructuredData from '@/components/StructuredData';
@@ -36,7 +37,7 @@ export default async function ServicePage({params}: Props) {
       <StructuredData data={faqSchema(questions, `/services/${slug}`, absoluteUrl(`/services/${slug}#service`))}/>
       <Questions items={questions}/>
     </section>
-    <section className="content-related" aria-labelledby="related-heading"><h2 id="related-heading">Explore our video work</h2><div className="film-directory film-directory-small">{related.map(film => <a key={film.slug} href={`/work/${film.slug}`}><img src={`/reels/${film.slug}.jpg`} width={480} height={617} alt={`${film.title} video still`} loading="lazy" decoding="async"/><span>{film.category} · {film.duration}</span><h3>{film.title} <span aria-hidden="true">↗</span></h3></a>)}</div><a className="content-action" href="/work">View the full film library <span aria-hidden="true">↗</span></a></section>
+    <section className="content-related" aria-labelledby="related-heading"><h2 id="related-heading">Explore our video work</h2><div className="film-directory film-directory-small">{related.map(film => <a key={film.slug} href={`/work/${film.slug}`}><img src={reelPoster(film.slug)} width={480} height={617} alt={`${film.title} video still`} loading="lazy" decoding="async"/><span>{film.category} · {film.duration}</span><h3>{film.title} <span aria-hidden="true">↗</span></h3></a>)}</div><a className="content-action" href="/work">View the full film library <span aria-hidden="true">↗</span></a></section>
     <aside className="content-close"><h2>Find your next direction.</h2><a className="button primary" href="/#contact">Let’s talk <span aria-hidden="true">↗</span></a><a className="content-action" href="/services">Explore all six services</a></aside>
   </ContentFrame>;
 }

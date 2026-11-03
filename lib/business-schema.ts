@@ -1,3 +1,4 @@
+import { assetUrl } from '@/data/media';
 import { absoluteUrl, site } from '@/data/site';
 import { partners } from '@/data/partners';
 import { serviceDetails } from '@/data/service-details';
@@ -13,7 +14,7 @@ export function businessSchema() {
       {
         '@type': 'Organization', '@id': organizationId, name: site.name, legalName: site.legalName, url: absoluteUrl(),
         description: site.description, email: site.email, telephone: site.phone,
-        logo: { '@type': 'ImageObject', url: absoluteUrl('/brand/logo.png'), width: 1296, height: 1213 },
+        logo: { '@type': 'ImageObject', url: absoluteUrl(assetUrl('/brand/logo.png')), width: 960, height: 899 },
         areaServed: serviceArea,
         contactPoint: { '@type': 'ContactPoint', contactType: 'Sales enquiries', telephone: site.phone, email: site.email },
         member: partners.map((_, index) => ({ '@id': absoluteUrl(`/#partner-${index + 1}`) })),

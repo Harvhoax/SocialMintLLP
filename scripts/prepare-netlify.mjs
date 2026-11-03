@@ -23,8 +23,9 @@ const csp = [
 ].join('; ');
 let headers = `# Generated at build time. Rebuild after changing any HTML or script.\n/*\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: DENY\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  X-Permitted-Cross-Domain-Policies: none\n  Content-Security-Policy: ${csp}\n`;
 if (isPreviewDeployment()) headers += '  X-Robots-Tag: noindex, follow\n';
-// HTML revalidates at the CDN default. Only fingerprinted Next assets are immutable.
+// HTML revalidates. Fingerprinted assets can also stay in the visitor browser cache.
 headers += '\n/_next/static/*\n  Cache-Control: public, max-age=31536000, immutable\n';
+headers += '\n/media/*\n  Cache-Control: public, max-age=31536000, immutable\n';
 for (const folder of ['reels', 'hero', 'team']) {
   headers += `\n/${folder}/*\n  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400\n`;
 }

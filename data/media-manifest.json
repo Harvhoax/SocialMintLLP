@@ -1,0 +1,150 @@
+{
+  "assets": {
+    "/hero/architecture.jpg": "/media/hero/architecture.f38fd976f3ab.webp",
+    "/hero/brand-film.jpg": "/media/hero/brand-film.ab2836965b0e.webp",
+    "/hero/brand-product.jpg": "/media/hero/brand-product.aba9d6f50a0c.webp",
+    "/hero/camera-detail.jpg": "/media/hero/camera-detail.a7f5c66cd4df.webp",
+    "/hero/celebration.jpg": "/media/hero/celebration.d607551cfc6e.webp",
+    "/hero/city-story.jpg": "/media/hero/city-story.6c150cd55eef.webp",
+    "/hero/edit-suite.jpg": "/media/hero/edit-suite.af9e08792dc4.webp",
+    "/hero/founder-story.jpg": "/media/hero/founder-story.6956f3f50e98.webp",
+    "/hero/hospitality.jpg": "/media/hero/hospitality.b7a66ebb0079.webp",
+    "/hero/on-set.jpg": "/media/hero/on-set.993ba082f181.webp",
+    "/hero/social-creator.jpg": "/media/hero/social-creator.02ff207b85a0.webp",
+    "/hero/studio-light.jpg": "/media/hero/studio-light.5fb605fa7239.webp",
+    "/team/partner-01.png": "/media/team/partner-01.4d200122d9cc.webp",
+    "/team/partner-02.jpg": "/media/team/partner-02.bf86e37a6bac.webp",
+    "/team/partner-03.jpg": "/media/team/partner-03.d97e1b04a2d3.webp",
+    "/reels/cafe-story.jpg": "/media/reels/cafe-story.6c5323f40426.webp",
+    "/reels/cafe.jpg": "/media/reels/cafe.f744029d590f.webp",
+    "/reels/dubai-real-estate.jpg": "/media/reels/dubai-real-estate.7ca2f7c9e696.webp",
+    "/reels/electrent.jpg": "/media/reels/electrent.731fa6510bbe.webp",
+    "/reels/founder-documentary.jpg": "/media/reels/founder-documentary.53448c290442.webp",
+    "/reels/kumarland.jpg": "/media/reels/kumarland.81a6939948cd.webp",
+    "/reels/mysastiflight.jpg": "/media/reels/mysastiflight.26c3778e3509.webp",
+    "/reels/short-form-edit.jpg": "/media/reels/short-form-edit.efa345ebfba3.webp",
+    "/reels/social-edit-01.jpg": "/media/reels/social-edit-01.cd41990f53dd.webp",
+    "/reels/social-edit-02.jpg": "/media/reels/social-edit-02.fafa9e32499b.webp",
+    "/reels/socialcox.jpg": "/media/reels/socialcox.c8c458f57663.webp",
+    "/reels/star-wedding.jpg": "/media/reels/star-wedding.7cb8e573bd97.webp",
+    "/reels/supercar-fest.jpg": "/media/reels/supercar-fest.43284e9d02ec.webp",
+    "/reels/videokart.jpg": "/media/reels/videokart.3f685dac14c1.webp",
+    "/brand/logo.png": "/media/brand/logo.53865fba942b.webp",
+    "/services/handling.svg": "/media/services/handling.cd061c1eb6b0.svg",
+    "/services/optimization.svg": "/media/services/optimization.e6339d12afb2.svg",
+    "/services/posts.svg": "/media/services/posts.5538eaa2ca09.svg",
+    "/services/reels.svg": "/media/services/reels.fa1e33ff58a1.svg",
+    "/services/shooting.svg": "/media/services/shooting.3e637504a1bc.svg",
+    "/services/thumbnails.svg": "/media/services/thumbnails.62e9dec0a521.svg",
+    "/fonts/font-0.woff2": "/media/fonts/font-0.9cd454570ba9.woff2",
+    "/fonts/font-1.woff2": "/media/fonts/font-1.a66fcabfd221.woff2",
+    "/fonts/font-2.woff2": "/media/fonts/font-2.5e8206cd3b18.woff2",
+    "/fonts/font-3.woff2": "/media/fonts/font-3.db426dca849f.woff2",
+    "/fonts/font-4.woff2": "/media/fonts/font-4.684c33b6825f.woff2",
+    "/fonts/font-5.woff2": "/media/fonts/font-5.22ccdd62b7af.woff2",
+    "/fonts/font-6.woff2": "/media/fonts/font-6.34a758cfe837.woff2",
+    "/fonts/font-7.woff2": "/media/fonts/font-7.5a6a6a60cf90.woff2",
+    "/fonts/font-8.woff2": "/media/fonts/font-8.398edafc1ebe.woff2",
+    "/fonts/fonts.css": "/media/fonts/fonts.e68c6a3ee7d7.css"
+  },
+  "previews": {
+    "cafe": {
+      "src": "/media/reels/cafe-sd.20e1d5f9958a.mp4",
+      "bytes": 1558318,
+      "width": 360,
+      "height": 640,
+      "duration": 31.717007
+    },
+    "cafe-story": {
+      "src": "/media/reels/cafe-story-sd.0888e1affb0f.mp4",
+      "bytes": 1406301,
+      "width": 360,
+      "height": 640,
+      "duration": 27.875
+    },
+    "dubai-real-estate": {
+      "src": "/media/reels/dubai-real-estate-sd.af4ecb7e25fc.mp4",
+      "bytes": 1234197,
+      "width": 360,
+      "height": 640,
+      "duration": 34.806712
+    },
+    "electrent": {
+      "src": "/media/reels/electrent-sd.0454c0bc2c1e.mp4",
+      "bytes": 765417,
+      "width": 360,
+      "height": 640,
+      "duration": 44.466213
+    },
+    "founder-documentary": {
+      "src": "/media/reels/founder-documentary-sd.6f9c35025261.mp4",
+      "bytes": 1077980,
+      "width": 640,
+      "height": 360,
+      "duration": 25.797007
+    },
+    "kumarland": {
+      "src": "/media/reels/kumarland-sd.5fb16baec11b.mp4",
+      "bytes": 2183579,
+      "width": 360,
+      "height": 640,
+      "duration": 43.5
+    },
+    "mysastiflight": {
+      "src": "/media/reels/mysastiflight-sd.2934e2bd6258.mp4",
+      "bytes": 3340705,
+      "width": 360,
+      "height": 640,
+      "duration": 70.263719
+    },
+    "short-form-edit": {
+      "src": "/media/reels/short-form-edit-sd.602c0a4c92b4.mp4",
+      "bytes": 742659,
+      "width": 360,
+      "height": 640,
+      "duration": 15.348005
+    },
+    "social-edit-01": {
+      "src": "/media/reels/social-edit-01-sd.67c1c7a665d1.mp4",
+      "bytes": 1510277,
+      "width": 360,
+      "height": 640,
+      "duration": 31.277007
+    },
+    "social-edit-02": {
+      "src": "/media/reels/social-edit-02-sd.28bb5ec7d8da.mp4",
+      "bytes": 1596599,
+      "width": 360,
+      "height": 640,
+      "duration": 35.200998
+    },
+    "socialcox": {
+      "src": "/media/reels/socialcox-sd.37fdca3730a2.mp4",
+      "bytes": 1499279,
+      "width": 360,
+      "height": 640,
+      "duration": 29.675011
+    },
+    "star-wedding": {
+      "src": "/media/reels/star-wedding-sd.c063c54cf581.mp4",
+      "bytes": 2076999,
+      "width": 360,
+      "height": 640,
+      "duration": 46.708333
+    },
+    "supercar-fest": {
+      "src": "/media/reels/supercar-fest-sd.da712616b3f2.mp4",
+      "bytes": 1162181,
+      "width": 360,
+      "height": 640,
+      "duration": 23.846939
+    },
+    "videokart": {
+      "src": "/media/reels/videokart-sd.60ca43636563.mp4",
+      "bytes": 2924928,
+      "width": 360,
+      "height": 640,
+      "duration": 62.541667
+    }
+  }
+}

@@ -1,11 +1,12 @@
 'use client';
+import { assetUrl } from '@/data/media';
 // Adapted from Clément Grellier's gradientslider (MIT); see THIRD_PARTY_NOTICES.md.
 import {useEffect,useRef,useState} from 'react';
 import {ArrowLeft,ArrowRight,ArrowUpRight} from 'lucide-react';
 import {services} from '@/data/services';
 import {StaggerText,MorphText,LetterSwap} from './ui/TextEffects';
 import {siteTheme,blend as blendColor,rgb} from '@/data/theme';
-const photos=['/services/reels.svg','/services/posts.svg','/services/handling.svg','/services/shooting.svg','/services/optimization.svg','/services/thumbnails.svg'];
+const photos=['/services/reels.svg','/services/posts.svg','/services/handling.svg','/services/shooting.svg','/services/optimization.svg','/services/thumbnails.svg'].map(assetUrl);
 export default function ServiceCarousel({onContact}:{onContact:()=>void}){
  const stage=useRef<HTMLDivElement>(null),cards=useRef<(HTMLDivElement|null)[]>([]),background=useRef<HTMLCanvasElement>(null),controller=useRef<(step:number,absolute?:boolean)=>void>(()=>{});
  const [active,setActive]=useState(0);

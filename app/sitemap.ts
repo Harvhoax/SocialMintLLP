@@ -1,3 +1,4 @@
+import { reelPoster, reelPreview } from '@/data/media';
 import type { MetadataRoute } from 'next';
 import { absoluteUrl } from '@/data/site';
 import { serviceDetails } from '@/data/service-details';
@@ -13,8 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(`/work/${film.slug}`),
       videos: [{
         title: film.title, description: film.description,
-        thumbnail_loc: absoluteUrl(`/reels/${film.slug}.jpg`),
-        content_loc: absoluteUrl(`/reels/${film.slug}.mp4`),
+        thumbnail_loc: absoluteUrl(reelPoster(film.slug)),
+        content_loc: absoluteUrl(reelPreview(film.slug)),
         duration: durationSeconds(film.duration),
       }],
     })),

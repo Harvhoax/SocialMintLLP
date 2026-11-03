@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/media/fonts/font-0.9cd454570ba9.woff2) format('woff2'), url(/fonts/font-0.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/media/fonts/font-1.a66fcabfd221.woff2) format('woff2'), url(/fonts/font-1.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/media/fonts/font-2.5e8206cd3b18.woff2) format('woff2'), url(/fonts/font-2.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/media/fonts/font-3.db426dca849f.woff2) format('woff2'), url(/fonts/font-3.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/media/fonts/font-4.684c33b6825f.woff2) format('woff2'), url(/fonts/font-4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/media/fonts/font-5.22ccdd62b7af.woff2) format('woff2'), url(/fonts/font-5.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/media/fonts/font-6.34a758cfe837.woff2) format('woff2'), url(/fonts/font-6.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/media/fonts/font-7.5a6a6a60cf90.woff2) format('woff2'), url(/fonts/font-7.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(/media/fonts/font-8.398edafc1ebe.woff2) format('woff2'), url(/fonts/font-8.ttf) format('truetype');
+}

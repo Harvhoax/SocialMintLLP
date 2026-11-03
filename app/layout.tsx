@@ -1,3 +1,4 @@
+import { assetUrl } from '@/data/media';
 import type { Metadata } from 'next';
 import type { CSSProperties } from 'react';
 import {siteTheme, themeVariables} from '@/data/theme';
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   icons: { icon: '/brand/mark.svg' },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-palette={siteTheme.id} style={themeVariables as CSSProperties}><head><link rel="stylesheet" href="/fonts/fonts.css" /><link rel="preload" href="/fonts/font-0.woff2" as="font" type="font/woff2" crossOrigin="anonymous" /></head><body><noscript><style>{'.loader,.progress,.gradient-carousel,.carousel-toolbar,.circular-stage,.circular-controls{display:none!important}.cinema{height:100svh}.cinema-sticky{position:relative}.cinema-second{display:none}.cinema-opening{visibility:visible!important;opacity:1!important}'}</style></noscript>{children}</body></html>;
+  return <html lang="en" data-palette={siteTheme.id} style={themeVariables as CSSProperties}><head><link rel="stylesheet" href={assetUrl('/fonts/fonts.css')} /><link rel="preload" href={assetUrl('/fonts/font-0.woff2')} as="font" type="font/woff2" crossOrigin="anonymous" /></head><body><noscript><style>{'.loader,.progress,.gradient-carousel,.carousel-toolbar,.circular-stage,.circular-controls{display:none!important}.cinema{height:100svh}.cinema-sticky{position:relative}.cinema-second{display:none}.cinema-opening{visibility:visible!important;opacity:1!important}'}</style></noscript>{children}</body></html>;
 }
 
 

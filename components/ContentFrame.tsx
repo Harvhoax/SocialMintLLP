@@ -10,7 +10,7 @@ export default function ContentFrame({ children }: { children: ReactNode }) {
     </header>
     <main id="content" className="content-main">{children}</main>
     <footer className="content-footer">
-      <div><a href="/">SocialMint</a><p>A fresh perspective. A lasting impression.</p></div>
+      <div><a href="/">{site.legalName}</a><p>A fresh perspective. A lasting impression.</p></div>
       <div><a href={`mailto:${site.email}`}>{site.email}</a><a href={`tel:${site.phone}`}>{site.phoneDisplay}</a></div>
       <nav aria-label="Footer navigation"><a href="/services">All services</a><a href="/work">Film library</a><a href="/#contact">Start a project</a></nav>
     </footer>

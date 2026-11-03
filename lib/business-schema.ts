@@ -11,7 +11,7 @@ export function businessSchema() {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Organization', '@id': organizationId, name: site.name, url: absoluteUrl(),
+        '@type': 'Organization', '@id': organizationId, name: site.name, legalName: site.legalName, url: absoluteUrl(),
         description: site.description, email: site.email, telephone: site.phone,
         logo: { '@type': 'ImageObject', url: absoluteUrl('/brand/logo.png'), width: 1296, height: 1213 },
         areaServed: serviceArea,

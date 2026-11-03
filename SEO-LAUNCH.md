@@ -31,8 +31,20 @@ Source: [Vercel domain setup](https://vercel.com/docs/domains/working-with-domai
 3. Add the site to [Bing Webmaster Tools](https://www.bing.com/webmasters/) and submit the same sitemap. If you choose HTML verification for a URL-prefix property instead, set the optional `GOOGLE_SITE_VERIFICATION` and/or `BING_SITE_VERIFICATION` token in Vercel and rebuild. Do not enter an API key, account password or full HTML tag in those fields.
 4. Validate public pages with [Schema Markup Validator](https://validator.schema.org/) and applicable markup with [Google Rich Results Test](https://search.google.com/test/rich-results). A valid Service schema does not promise a special Google result.
 5. Run [PageSpeed Insights](https://pagespeed.web.dev/) for mobile and desktop home, a service page and a watch page. Track LCP, INP and CLS as real-user field data becomes available. Local builds and file-size reductions are not evidence of passing live Core Web Vitals.
+6. Review the site's generative-AI inclusion setting in Search Console and use its Generative AI performance report when available for this property. These account controls and results cannot be enabled or verified in repository code. In Bing Webmaster Tools, review AI grounding preferences as well as crawl/indexing status.
 
 Source: [Google sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
+
+## Answer and generative search pass — 3 November 2026
+
+- Twelve homepage answers now have stable fragment URLs and contextual links to relevant services, the film library and contact. Six service pages each have three distinct questions covering the specific deliverables, preparation and service differences: 30 visible answers across seven pages.
+- Answers render in native HTML details with no client-side fetching or animation requirement. Each FAQPage describes the same visible questions and answers from the same data source; no schema-only answers are added. This standard schema vocabulary does not promise special FAQ results or AI citations.
+- The legal name SocialMint LLP appears in every footer and Organization. The brand remains SocialMint, with the same canonical domain, contact information, named team and confirmed Mumbai/India service area.
+- The existing public robots policy permits compliant search crawlers. Hosting-level bot settings still need live verification: a correct robots file cannot override a firewall, authentication or domain failure.
+- Build checks now compare every structured answer against rendered text and its actual fragment ID, verify counts, canonical URLs and publisher identity, and check the footer name on all 23 pages. Existing indexability, media and link checks remain enabled.
+- Next evidence needed: deploy and verify the canonical domain, complete search-console ownership/indexing controls, monitor real search/referral enquiries, and publish owner-approved project details or transcripts. Original results, client permission and true video release dates must come from the team; they cannot be generated as SEO claims.
+
+Basis: [Google generative search guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), [Schema.org FAQPage vocabulary](https://schema.org/FAQPage). Google does not require llms.txt or special AI markup. Content quality and indexing support discovery; neither implementation nor markup guarantees selection in an answer.
 
 ## Video details to complete
 

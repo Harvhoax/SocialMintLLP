@@ -2,6 +2,7 @@
 // Do not use VERCEL_URL here: it creates duplicate, deployment-specific canonicals.
 export const site = {
   name: 'SocialMint',
+  legalName: 'SocialMint LLP',
   url: 'https://socialmintstudio.com',
   title: 'SocialMint | Social Media Agency in Mumbai',
   description: 'Social media management, reels, video production and creative design for brands in Mumbai and across India. Explore SocialMint’s work and start a project.',

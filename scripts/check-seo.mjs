@@ -14,9 +14,12 @@ const preview = ['preview', 'development'].includes(process.env.VERCEL_ENV);
 const linkGraph = new Map();
 const descriptions = new Set();
 let localLinks = 0;
+let answerPages = 0;
+let answerCount = 0;
 const assets = new Set();
 const attrs = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(match => [match[1], match[2]]));
-const strip = text => text.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&');
+const strip = text => text.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+const normalize = text => strip(text).replace(/\s+/g, ' ').trim();
 const htmlFile = path => path === '/' ? 'index.html' : `${path.slice(1)}.html`;
 for (const url of urls) {
   assert.equal(new URL(url).origin, origin, 'Production origin only');
@@ -48,6 +51,34 @@ for (const url of urls) {
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(match => JSON.parse(match[1]));
   assert.ok(schemas.length, `${path}: structured data exists`);
   for (const schema of schemas) assert.equal(schema['@context'], 'https://schema.org');
+  const footer = html.match(/<footer\b[^>]*>(.*?)<\/footer>/s)?.[1] || '';
+  assert.ok(normalize(footer).includes('SocialMint LLP'), `${path}: legal business name in footer`);
+  if (path === '/' || path.startsWith('/services/')) {
+    const faq = schemas.filter(schema => schema['@type'] === 'FAQPage');
+    assert.equal(faq.length, 1, `${path}: one question schema`);
+    assert.equal(faq[0].url, url, `${path}: question schema uses canonical URL`);
+    assert.equal(faq[0].publisher['@id'], `${origin}/#organization`);
+    const answers = [...html.matchAll(/<details\b([^>]*)>(.*?)<\/details>/gs)].map(match => ({
+      id: attrs(match[1]).id,
+      question: normalize(match[2].match(/<summary\b[^>]*>(.*?)<\/summary>/s)?.[1] || ''),
+      answer: normalize(match[2].match(/<p\b[^>]*>(.*?)<\/p>/s)?.[1] || ''),
+    }));
+    assert.equal(answers.length, path === '/' ? 12 : 3, `${path}: complete visible answer content`);
+    assert.equal(faq[0].mainEntity.length, answers.length, `${path}: no hidden schema-only answers`);
+    assert.equal(new Set(answers.map(item => item.id)).size, answers.length, `${path}: unique question anchors`);
+    for (const question of faq[0].mainEntity) {
+      assert.equal(question['@type'], 'Question');
+      assert.equal(question.acceptedAnswer['@type'], 'Answer');
+      const anchor = new URL(question['@id']);
+      assert.equal(`${anchor.origin}${anchor.pathname}`, url);
+      const visible = answers.find(item => item.id === anchor.hash.slice(1));
+      assert.ok(visible, `${path}: question has a visible anchored answer`);
+      assert.equal(visible.question, question.name);
+      assert.equal(visible.answer, question.acceptedAnswer.text, `${path}: schema agrees with visible answer`);
+    }
+    answerPages++;
+    answerCount += answers.length;
+  }
   for (const match of html.matchAll(/<(?:a|img|source|video)\b[^>]*>/g)) {
     const tag = attrs(match[0]);
     if (match[0].startsWith('<img')) assert.ok(Object.hasOwn(tag, 'alt'), `${path}: image has alt attribute`);
@@ -76,12 +107,13 @@ const home = read('index.html');
 const homeGraph = JSON.parse(home.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])['@graph'];
 const org = homeGraph.find(item => item['@type'] === 'Organization');
 assert.equal(org.email, 'info@socialmintstudio.com');
+assert.equal(org.legalName, 'SocialMint LLP');
 assert.equal(org.telephone, '+919321388129');
 assert.ok(org.areaServed.some(item => item.name === 'Mumbai'));
 assert.equal(homeGraph.filter(item => item['@type'] === 'Person').length, 3);
 assert.equal(org.hasOfferCatalog.itemListElement.length, 6);
 assert.ok(!org.address && !org.aggregateRating, 'No invented address or reviews');
-assert.match(home, /<details><summary>/, 'Questions use crawlable native HTML');
+assert.match(home, /<details\b[^>]*><summary>/, 'Questions use crawlable native HTML');
 assert.match(home, /<noscript>/, 'Landing page remains accessible without JavaScript');
 assert.equal([...sitemap.matchAll(/<video:video>/g)].length, 14, 'All watch pages have video sitemap entries');
 for (const match of sitemap.matchAll(/<video:content_loc>([^<]+)<\/video:content_loc>/g)) {
@@ -96,4 +128,6 @@ const image = readFileSync(join(out, 'social-image.png'));
 assert.equal(image.subarray(1, 4).toString(), 'PNG', 'Social image is a real PNG');
 assert.equal(image.readUInt32BE(16), 1200);
 assert.equal(image.readUInt32BE(20), 630);
-console.log(`SEO export checks passed: ${urls.length} pages, ${localLinks} local references, ${assets.size} media assets, 14 video sitemap entries, unique metadata and valid JSON-LD.`);
+assert.equal(answerPages, 7);
+assert.equal(answerCount, 30);
+console.log(`SEO export checks passed: ${urls.length} pages, ${localLinks} local references, ${assets.size} media assets, 14 video sitemap entries and ${answerCount} visible/schema-matched answers across ${answerPages} pages.`);

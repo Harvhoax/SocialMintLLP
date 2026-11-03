@@ -23,7 +23,7 @@ const csp = headers.match(/Content-Security-Policy: ([^\n]+)/)?.[1];
 assert.ok(csp);
 const scripts = csp.split(';').find(d => d.trim().startsWith('script-src '));
 assert.ok(scripts && !scripts.includes('unsafe-inline') && !scripts.includes('unsafe-eval'));
-assert.deepEqual(scripts.trim().split(/\s+/).filter(item => item.startsWith('https:')), isPreviewDeployment() ? [] : ['https://www.googletagmanager.com'], 'Only the explicit Google tag script origin is allowed in production');
+assert.deepEqual(scripts.trim().split(/\s+/).filter(item => item.startsWith('https:')), isPreviewDeployment() ? [] : ['https://www.googletagmanager.com', 'https://www.clarity.ms', 'https://scripts.clarity.ms'], 'Only the explicit analytics script origins are allowed in production');
 assert.match(csp, /frame-ancestors 'none'/);
 assert.match(csp, /object-src 'none'/);
 assert.match(csp, /form-action 'none'/);

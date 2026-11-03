@@ -17,10 +17,10 @@ for (const file of htmlFiles) {
 const analytics = !isPreviewDeployment();
 if (analytics) hashes.add(`'sha256-${createHash('sha256').update(googleAnalyticsInitializer()).digest('base64')}'`);
 const csp = [
-  "default-src 'self'", `script-src 'self' ${analytics ? 'https://www.googletagmanager.com ' : ''}${[...hashes].sort().join(' ')}`,
+  "default-src 'self'", `script-src 'self' ${analytics ? 'https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms ' : ''}${[...hashes].sort().join(' ')}`,
   "script-src-attr 'none'", "style-src 'self' 'unsafe-inline'",
-  `img-src 'self' data: blob:${analytics ? ' https://www.googletagmanager.com https://*.google-analytics.com' : ''}`, "font-src 'self'", "media-src 'self' blob:",
-  `connect-src 'self'${analytics ? ' https://www.googletagmanager.com https://*.google-analytics.com https://analytics.google.com' : ''}`, "worker-src 'self' blob:", "object-src 'none'",
+  `img-src 'self' data: blob:${analytics ? ' https://www.googletagmanager.com https://*.google-analytics.com https://*.clarity.ms https://c.bing.com' : ''}`, "font-src 'self'", "media-src 'self' blob:",
+  `connect-src 'self'${analytics ? ' https://www.googletagmanager.com https://*.google-analytics.com https://analytics.google.com https://*.clarity.ms' : ''}`, "worker-src 'self' blob:", "object-src 'none'",
   "base-uri 'none'", "frame-ancestors 'none'", "form-action 'none'",
   'upgrade-insecure-requests',
 ].join('; ');

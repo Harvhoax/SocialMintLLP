@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 import {siteTheme, themeVariables} from '@/data/theme';
 import {isPreview, site} from '@/data/site';
 import SiteAnalytics from '@/components/SiteAnalytics';
+import SiteClarity from '@/components/SiteClarity';
 import {pageMetadata} from '@/lib/seo';
 import './globals.css';
 import './palette.css';
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   icons: { icon: '/brand/mark.svg' },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-palette={siteTheme.id} style={themeVariables as CSSProperties}><head><link rel="stylesheet" href={assetUrl('/fonts/fonts.css')} /><link rel="preload" href={assetUrl('/fonts/font-0.woff2')} as="font" type="font/woff2" crossOrigin="anonymous" /></head><body><noscript><style>{'.loader,.progress,.gradient-carousel,.carousel-toolbar,.circular-stage,.circular-controls{display:none!important}.cinema{height:100svh}.cinema-sticky{position:relative}.cinema-second{display:none}.cinema-opening{visibility:visible!important;opacity:1!important}'}</style></noscript>{children}{!isPreview && process.env.NODE_ENV === 'production' ? <SiteAnalytics/> : null}</body></html>;
+  return <html lang="en" data-palette={siteTheme.id} style={themeVariables as CSSProperties}><head><link rel="stylesheet" href={assetUrl('/fonts/fonts.css')} /><link rel="preload" href={assetUrl('/fonts/font-0.woff2')} as="font" type="font/woff2" crossOrigin="anonymous" /></head><body><noscript><style>{'.loader,.progress,.gradient-carousel,.carousel-toolbar,.circular-stage,.circular-controls{display:none!important}.cinema{height:100svh}.cinema-sticky{position:relative}.cinema-second{display:none}.cinema-opening{visibility:visible!important;opacity:1!important}'}</style></noscript>{children}{!isPreview && process.env.NODE_ENV === 'production' ? <SiteAnalytics/> : null}<SiteClarity production={!isPreview && process.env.NODE_ENV === 'production'}/></body></html>;
 }
 
 

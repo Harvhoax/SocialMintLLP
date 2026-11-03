@@ -103,3 +103,19 @@
 .brief-delivery .primary { display:inline-flex; align-items:center; gap:16px; padding:16px 22px; }
 .brief-tools { display:flex; flex-wrap:wrap; gap:12px 22px; margin:26px 0; }
 .brief-tools button { padding:8px 0; color:var(--accent-soft); font-size:16px; text-decoration:underline; text-underline-offset:5px; }
+
+.recording-settings-link{text-align:left;padding:0;color:inherit;font-size:16px;line-height:1.6}
+.recording-settings-link:hover{text-decoration:underline;text-underline-offset:4px}
+.recording-preferences{position:fixed;right:24px;bottom:24px;z-index:1000;width:min(390px,calc(100% - 48px));padding:24px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:12px}
+.recording-preferences h2{font:600 23px/1.2 'DM Sans',sans-serif;letter-spacing:-.02em;margin:0 0 12px}
+.recording-preferences p{font-size:16px;line-height:1.55;margin:0 0 18px;color:var(--dim)}
+.recording-preferences .recording-current{margin-bottom:16px;color:var(--text)}
+.recording-actions{display:flex;flex-wrap:wrap;gap:12px}
+.recording-actions button{padding:12px 16px;min-height:44px;border:1px solid var(--mint);border-radius:6px;font-size:16px;line-height:1.25;color:var(--mint)}
+.recording-actions button:first-child{background:var(--mint);color:var(--bg)}
+.recording-actions button:hover{background:var(--accent-soft);border-color:var(--accent-soft);color:var(--bg)}
+.recording-dismiss{font-size:16px;color:var(--mint);text-decoration:underline;text-underline-offset:4px}
+.recording-preferences [role=status]{margin:18px 0 10px}
+@media(max-width:600px){.recording-preferences{right:16px;bottom:16px;width:calc(100% - 32px);padding:20px}}
+
+.recording-privacy{display:inline-block;font-size:16px;line-height:1.4;color:var(--mint);text-decoration:underline;text-underline-offset:4px;margin:0 0 18px}

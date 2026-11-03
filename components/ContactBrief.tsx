@@ -44,7 +44,7 @@ export default function ContactBrief() {
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch { setNotice('Download unavailable. Select and copy the enquiry text below.'); }
   }
-  return <div className="brief-panel">
+  return <div className="brief-panel" data-clarity-mask="true">
     <div className="brief-heading"><h3><GhostText prefix="Tell us " text="your story."/></h3><ArrowUpRight/></div>
     {brief && links ? <div className="brief-review">
       <h4 ref={heading} tabIndex={-1}>Ready for your review.</h4>

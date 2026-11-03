@@ -51,6 +51,10 @@ The enquiry form needs no database, backend or API key. It validates input local
 
 GA4 uses the official Next.js integration with measurement ID G-WKYJ3WLFRL on the production business domain. Local/preview visits are excluded. Contact intent is measured through safe custom click/handoff events without form values or message URLs; confirmed leads and bookings are not invented. See [ANALYTICS.md](ANALYTICS.md) for privacy boundaries, the exact CSP initializer hash and owner-side Realtime/Key Event verification.
 
+## Session recordings
+
+Microsoft Clarity project z7v97eemj7 loads lazily only after the visitor allows recording on the live business domain. GA4 retains its existing behavior. Footer recording preferences let the visitor decline or withdraw; browser privacy signals are respected. The entire enquiry panel and preview are explicitly masked. See [CLARITY.md](CLARITY.md) for consent, CSP, masking and recording verification.
+
 ## Checks
 
 `npm run build` includes TypeScript checking and produces static output. Run `npm run check:seo` after a build to check every sitemap URL, canonical, unique title/description, native video source, local link/asset, JSON-LD, social preview and crawl configuration. `npm audit --omit=dev` audits production dependencies. Browser QA should verify no video requests before Play, playback, pause, sound, native media controls, mobile layout, anchor navigation and brief validation. Real-user Core Web Vitals and public indexing must be measured after domain launch.

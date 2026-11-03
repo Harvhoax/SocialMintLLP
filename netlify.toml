@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+# Preserve the exact inline script bytes used by the generated CSP hashes.
+# Clean routes and the real 404 are explicitly emitted in out/_redirects.
+[build.processing]
+  skip_processing = true

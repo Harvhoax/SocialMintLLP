@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { isPreviewDeployment } from '../lib/deploy-context.mjs';
 
 const out = join(process.cwd(), 'out');
 const origin = 'https://socialmintstudio.com';
@@ -10,7 +11,7 @@ const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]
 assert.equal(urls.length, 23, 'Home, service/film directories, six services and fourteen watch pages');
 assert.equal(new Set(urls).size, urls.length, 'Sitemap URLs must be unique');
 const titles = new Set();
-const preview = ['preview', 'development'].includes(process.env.VERCEL_ENV);
+const preview = isPreviewDeployment();
 const linkGraph = new Map();
 const descriptions = new Set();
 let localLinks = 0;

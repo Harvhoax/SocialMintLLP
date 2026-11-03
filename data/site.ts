@@ -1,3 +1,5 @@
+import { isPreviewDeployment } from '@/lib/deploy-context.mjs';
+
 // The public identity is stable across local, preview and production builds.
 // Do not use VERCEL_URL here: it creates duplicate, deployment-specific canonicals.
 export const site = {
@@ -13,4 +15,4 @@ export const site = {
 
 export const absoluteUrl = (path = '/') => new URL(path, site.url).toString();
 
-export const isPreview = process.env.VERCEL_ENV === 'preview' || process.env.VERCEL_ENV === 'development';
+export const isPreview = isPreviewDeployment();

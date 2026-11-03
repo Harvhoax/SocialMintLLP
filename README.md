@@ -6,7 +6,13 @@ Next.js + TypeScript agency website with GSAP/Lenis scrolling, 3D galleries, par
 
 Run `npm ci` once, then `npm run dev`. Open http://localhost:3000.
 
-## Vercel deployment
+## Netlify deployment
+
+The primary hosting target is Netlify, in `tusharsingh@socialmintstudio.com`, at `https://socialmintstudio.netlify.app`. `netlify.toml` builds with `npm run build` and publishes `out/` as a fully static site. No functions, database, API keys or paid runtime are required. The build generates `_headers` with a hash-based script CSP and finite media caching, plus `_redirects` for every exported route and a genuine 404. Post-processing is disabled to preserve the exact hashed script bytes. See [NETLIFY-DEPLOYMENT.md](NETLIFY-DEPLOYMENT.md).
+
+Netlify production builds are indexable; deploy-preview and branch-deploy builds emit noindex in HTML and HTTP headers. Unknown Netlify contexts also default to noindex. Rebuild for production rather than promoting preview-built HTML. The canonical domain remains `https://socialmintstudio.com`.
+
+## Existing Vercel deployment
 
 Import `Harvhoax/SocialMintLLP`, select branch `main` and repository root `./`, and use the detected **Next.js** framework settings. Build command: `npm run build`. Keep the output directory at the framework default. The project uses Next.js static export; `out/` is also available for other static hosts. No server functions or secrets are required for the current features.
 

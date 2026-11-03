@@ -6,6 +6,12 @@ Next.js + TypeScript agency website with GSAP/Lenis scrolling, 3D galleries, par
 
 Run `npm ci` once, then `npm run dev`. Open http://localhost:3000.
 
+## Development and release branches
+
+`main` holds the stable production version. Make and push changes to `pre-deployment` first. GitHub Actions checks both production and preview builds, including security, SEO, script policy and routing checks. After the checks pass and the changes are reviewed, open a pull request from `pre-deployment` into `main` and merge only after approval. The workflow runs checks only; it does not publish the site or change visibility.
+
+Netlify is currently deployed manually. A push to `pre-deployment` does not yet create a hosted preview. Once GitHub is connected in Netlify, set production to `main`, enable branch deploys for `pre-deployment`, and retain private preview visibility. Rebuild the approved source in production context before publishing; do not reuse preview-built HTML with noindex.
+
 ## Netlify deployment
 
 The primary hosting target is Netlify, in `tusharsingh@socialmintstudio.com`, at `https://socialmintstudio.netlify.app`. `netlify.toml` builds with `npm run build` and publishes `out/` as a fully static site. No functions, database, API keys or paid runtime are required. The build generates `_headers` with a hash-based script CSP and finite media caching, plus `_redirects` for every exported route and a genuine 404. Post-processing is disabled to preserve the exact hashed script bytes. See [NETLIFY-DEPLOYMENT.md](NETLIFY-DEPLOYMENT.md).

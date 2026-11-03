@@ -45,7 +45,11 @@ The enquiry form needs no database, backend or API key. It validates input local
 - Fourteen films: `data/reels.ts`, `components/ReelsShowcase.tsx`, and `public/reels/`. The work section is an infinite circular WebGL gallery with all fourteen films. Posters initialize near the section; only visible panels request artwork, and videos wait for an explicit Play action.
 - Full-length SD films are encoded offline to H.264 at 24fps, a maximum 640px edge, video bitrate capped at 360kbps and mono AAC capped at 40kbps. Fast-start metadata is retained. HD files remain available only on request. The 14 new SD files total 23.08 MB instead of 35.42 MB. Existing public URLs remain available.
 - Gallery playback is click-to-play and muted initially, with no loop or automatic playback in full view. Moving films, leaving the gallery or hiding the tab pauses and releases the shared player source; reopening a film also requires Play. Native watch pages use preload="none". Reduced-motion and unavailable WebGL use a static scrollable poster gallery.
-- The circular layout, frame borders, focus enlargement and smooth horizontal transitions are retained. New WebP images and compressed SVG artwork reduce image bytes by about 80%. Fingerprinted files under public/media receive one-year immutable browser caching. The source manifest is data/media-manifest.json; no runtime transforms, image CDN, serverless functions or external tracking were added. See [BANDWIDTH-OPTIMIZATION.md](BANDWIDTH-OPTIMIZATION.md) for measurements and the release budget.
+- The circular layout, frame borders, focus enlargement and smooth horizontal transitions are retained. New WebP images and compressed SVG artwork reduce image bytes by about 80%. Fingerprinted files under public/media receive one-year immutable browser caching. The source manifest is data/media-manifest.json; no runtime transforms, image CDN or serverless functions were added. GA4 is integrated separately as described below. See [BANDWIDTH-OPTIMIZATION.md](BANDWIDTH-OPTIMIZATION.md) for measurements and the release budget.
+
+## Analytics
+
+GA4 uses the official Next.js integration with measurement ID G-WKYJ3WLFRL on the production business domain. Local/preview visits are excluded. Contact intent is measured through safe custom click/handoff events without form values or message URLs; confirmed leads and bookings are not invented. See [ANALYTICS.md](ANALYTICS.md) for privacy boundaries, the exact CSP initializer hash and owner-side Realtime/Key Event verification.
 
 ## Checks
 

@@ -53,8 +53,8 @@ export default function ContactBrief() {
       <label htmlFor="brief-preview">Your enquiry</label>
       <textarea id="brief-preview" readOnly value={links.body} rows={7}/>
       <div className="brief-delivery">
-        <a className="button primary" href={links.whatsapp} target="_blank" rel="noopener noreferrer">{links.copyForWhatsapp?'Open WhatsApp':'Continue in WhatsApp'} <ArrowUpRight size={18}/></a>
-        <a className="text-button" href={links.email}>{links.copyForEmail?'Open email':'Continue in email'} <ArrowUpRight size={18}/></a>
+        <button type="button" className="button primary" data-analytics-contact="whatsapp" data-analytics-context="enquiry" onClick={()=>window.open(links.whatsapp,'_blank','noopener,noreferrer')}>{links.copyForWhatsapp?'Open WhatsApp':'Continue in WhatsApp'} <ArrowUpRight size={18}/></button>
+        <button type="button" className="text-button" data-analytics-contact="email" data-analytics-context="enquiry" onClick={()=>{window.location.href=links.email;}}>{links.copyForEmail?'Open email':'Continue in email'} <ArrowUpRight size={18}/></button>
       </div>
       <div className="brief-tools"><button type="button" onClick={copy}>Copy enquiry</button><button type="button" onClick={download}>Download text</button><button type="button" onClick={()=>{setBrief(null);setNotice('');}}>Edit enquiry</button><button type="button" onClick={()=>{setBrief(null);setFields({name:'',contact:'',message:''});setSelected([]);setNotice('');}}>Clear enquiry</button></div>
       <p role="status" aria-live="polite">{notice}</p>

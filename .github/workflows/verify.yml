@@ -2,7 +2,7 @@ name: Verify SocialMint
 
 on:
   push:
-    branches: [pre-deployment]
+    branches: [pre-deployment, main]
   pull_request:
     branches: [main]
 

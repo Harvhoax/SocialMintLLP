@@ -8,9 +8,9 @@ Run `npm ci` once, then `npm run dev`. Open http://localhost:3000.
 
 ## Development and release branches
 
-`main` holds the stable production version. Make and push changes to `pre-deployment` first. GitHub Actions checks both production and preview builds, including security, SEO, script policy and routing checks. After the checks pass and the changes are reviewed, open a pull request from `pre-deployment` into `main` and merge only after approval. The workflow runs checks only; it does not publish the site or change visibility.
+`main` holds the stable production version. Make and push changes to `pre-deployment` first. GitHub Actions checks both production and preview builds, including security, SEO, script policy and routing checks. After the checks pass and the changes are reviewed, open a pull request from `pre-deployment` into `main` and merge only after approval. GitHub Actions runs checks only. Netlify independently builds and publishes pushes to main after the approved promotion.
 
-Netlify is currently deployed manually. A push to `pre-deployment` does not yet create a hosted preview. Once GitHub is connected in Netlify, set production to `main`, enable branch deploys for `pre-deployment`, and retain private preview visibility. Rebuild the approved source in production context before publishing; do not reuse preview-built HTML with noindex.
+Netlify continuous deployment is connected to `Harvhoax/SocialMintLLP`. Pushes to `main` automatically build and publish production using `netlify.toml`. A read-only repository deploy key and a push webhook provide access; no Netlify token is stored in GitHub Actions. `pre-deployment` remains a review branch without automatic publishing. Preview access stays private. The hosted production build uses `NETLIFY=true` and `CONTEXT=production`; never publish preview-built HTML with noindex.
 
 ## Netlify deployment
 

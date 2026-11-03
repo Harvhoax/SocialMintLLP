@@ -5,14 +5,16 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
     "build": "npm run check:security && next build && node scripts/prepare-netlify.mjs && npm run check:seo && npm run check:netlify && npm run check:media && npm run check:analytics && npm run check:clarity",
-    "start": "next start",
+    "start": "node scripts/preview.mjs",
+    "preview": "node scripts/preview.mjs",
     "typecheck": "tsc --noEmit",
     "check:seo": "node scripts/check-seo.mjs",
     "check:security": "node scripts/check-security.cjs",
     "check:netlify": "node scripts/check-netlify.mjs",
     "check:media": "node scripts/check-media.mjs",
     "check:analytics": "node scripts/check-analytics.mjs",
-    "check:clarity": "node scripts/check-clarity.mjs"
+    "check:clarity": "node scripts/check-clarity.mjs",
+    "check:preview": "node scripts/check-preview.mjs"
   },
   "dependencies": {
     "@next/third-parties": "16.4.3",

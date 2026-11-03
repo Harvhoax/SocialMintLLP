@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { isPreviewDeployment } from '../lib/deploy-context.mjs';
+import { isPreviewDeployment } from '../src/lib/deploy-context.mjs';
 
-const media = JSON.parse(readFileSync(new URL('../data/media-manifest.json', import.meta.url), 'utf8'));
+const media = JSON.parse(readFileSync(new URL('../src/data/media-manifest.json', import.meta.url), 'utf8'));
 const out = join(process.cwd(), 'out');
 const origin = 'https://socialmintstudio.com';
 const read = path => readFileSync(join(out, path), 'utf8');

@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
-import { isPreviewDeployment } from '../lib/deploy-context.mjs';
+import { isPreviewDeployment } from '../src/lib/deploy-context.mjs';
 import { googleAnalyticsInitializer } from './analytics-csp.mjs';
 
 const out = join(process.cwd(), 'out');

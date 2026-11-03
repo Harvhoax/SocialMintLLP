@@ -1,7 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const ts = require('typescript');
-const compiled = ts.transpileModule(fs.readFileSync('lib/brief.ts', 'utf8'), {compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;
+const compiled = ts.transpileModule(fs.readFileSync('src/lib/brief.ts', 'utf8'), {compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;
 const api = {};
 new Function('exports','require',compiled)(api,require);
 const valid = {name:' Tushar Singh ',contact:' info@socialmintstudio.com ',message:'A real project enquiry.',services:['Reels']};
@@ -22,7 +22,7 @@ assert.ok(long.body.includes('🎥'.repeat(1400)));
 const hostile=api.enquiryLinks({...valid,message:'Hello &bcc=attacker@example.com #test <script>alert(1)</script>'},'info@socialmintstudio.com','+919321388129');
 assert.equal(new URL(hostile.email).searchParams.has('bcc'),false);
 assert.ok(new URL(hostile.email).searchParams.get('body').includes('&bcc='));
-const contact=fs.readFileSync('components/ContactBrief.tsx','utf8');
+const contact=fs.readFileSync('src/components/ContactBrief.tsx','utf8');
 assert.ok(!contact.includes('fetch('));
 assert.ok(!contact.includes('localStorage.setItem'));
 const headers=JSON.parse(fs.readFileSync('vercel.json','utf8')).headers[0].headers;

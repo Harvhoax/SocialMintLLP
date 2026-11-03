@@ -2,7 +2,7 @@
 
 Measurement ID: **G-WKYJ3WLFRL**, supplied by the owner for Social Mint / socialmintstudio.com. This is public configuration, not a credential.
 
-`components/SiteAnalytics.tsx` uses the official `@next/third-parties/google` component once in the root layout. Scripts load after hydration. Production builds on the apex/www business domain collect activity; development, localhost, Netlify preview builds and preview URLs do not. Do Not Track, Global Privacy Control and Google's `ga-disable-G-WKYJ3WLFRL` flag prevent initialization when enabled. Ad blockers may also prevent collection.
+`src/components/SiteAnalytics.tsx` uses the official `@next/third-parties/google` component once in the root layout. Scripts load after hydration. Production builds on the apex/www business domain collect activity; development, localhost, Netlify preview builds and preview URLs do not. Do Not Track, Global Privacy Control and Google's `ga-disable-G-WKYJ3WLFRL` flag prevent initialization when enabled. Ad blockers may also prevent collection.
 
 The component queues privacy settings before the first config/page_view: Google advertising signals and ad personalization are disabled. It does not set user IDs or user-provided data. Reported page locations omit query strings and fragments; referrers contain origin only. This deliberately limits campaign/query attribution and referral detail. Existing Enhanced Measurement can supply pageviews and engagement; the application does not send a duplicate manual page_view.
 

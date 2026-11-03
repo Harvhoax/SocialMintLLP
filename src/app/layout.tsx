@@ -6,11 +6,11 @@ import {isPreview, site} from '@/data/site';
 import SiteAnalytics from '@/components/SiteAnalytics';
 import SiteClarity from '@/components/SiteClarity';
 import {pageMetadata} from '@/lib/seo';
-import './globals.css';
-import './palette.css';
-import './scroll-layout.css';
-import './text-effects.css';
-import './discovery.css';
+import '@/styles/globals.css';
+import '@/styles/palette.css';
+import '@/styles/scroll-layout.css';
+import '@/styles/text-effects.css';
+import '@/styles/discovery.css';
 export const metadata: Metadata = {
   ...pageMetadata(site.title, site.description, '/'),
   metadataBase: new URL(site.url),

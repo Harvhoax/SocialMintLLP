@@ -40,3 +40,5 @@ jobs:
         run: npm ci
       - name: Build and verify security, SEO and Netlify export
         run: npm run build
+      - name: Verify exported routes, headers and video delivery
+        run: npm run check:preview

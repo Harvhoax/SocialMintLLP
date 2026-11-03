@@ -48,7 +48,7 @@ Basis: [Google generative search guidance](https://developers.google.com/search/
 
 ## Video details to complete
 
-Enter the true initial public release timestamp for each film in `reelPublicationDates` in `data/reel-details.ts`, as an ISO 8601 value with timezone, only after the owner confirms it. That enables the existing `VideoObject` generator. Do not use today's date, a build date, file modification date or transcode timestamp as a substitute. If a film has never been public, record its actual first release when it launches.
+Enter the true initial public release timestamp for each film in `reelPublicationDates` in `src/data/reel-details.ts`, as an ISO 8601 value with timezone, only after the owner confirms it. That enables the existing `VideoObject` generator. Do not use today's date, a build date, file modification date or transcode timestamp as a substitute. If a film has never been public, record its actual first release when it launches.
 
 For stronger individual watch pages, add owner-approved project context (the brief, SocialMint's specific contribution and an accurate transcript or captions where relevant). Do not claim a named brand is a client or invent performance metrics based on a sample filename. Check publication permission before adding client names, results or testimonials.
 

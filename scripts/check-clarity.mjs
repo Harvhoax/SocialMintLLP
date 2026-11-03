@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync, readdirSync} from 'node:fs';
-import {clarityProjectId, clarityPreferenceKey, clarityPreferenceLifetime, clarityTagUrl, privacyBlocksRecording, readRecordingPreference, recordingConsent, recordingEnvironmentAllowed, saveRecordingPreference, sensitiveRecordingUrl} from '../lib/clarity-config.mjs';
-import {isPreviewDeployment} from '../lib/deploy-context.mjs';
+import {clarityProjectId, clarityPreferenceKey, clarityPreferenceLifetime, clarityTagUrl, privacyBlocksRecording, readRecordingPreference, recordingConsent, recordingEnvironmentAllowed, saveRecordingPreference, sensitiveRecordingUrl} from '../src/lib/clarity-config.mjs';
+import {isPreviewDeployment} from '../src/lib/deploy-context.mjs';
 
 assert.equal(clarityProjectId, 'z7v97eemj7');
 assert.equal(clarityTagUrl, 'https://www.clarity.ms/tag/z7v97eemj7');
@@ -37,7 +37,7 @@ assert.equal(sensitiveRecordingUrl('https://socialmintstudio.com/#contact'), fal
 assert.equal(sensitiveRecordingUrl('https://socialmintstudio.com/?utm_source=linkedin'), false);
 assert.deepEqual(recordingConsent(true), {analytics_Storage:'granted',ad_Storage:'denied'});
 assert.deepEqual(recordingConsent(false), {analytics_Storage:'denied',ad_Storage:'denied'});
-const component = readFileSync('components/SiteClarity.tsx', 'utf8');
+const component = readFileSync('src/components/SiteClarity.tsx', 'utf8');
 assert.match(component, /strategy="lazyOnload"/);
 assert.ok(component.includes("existing('stop')"), 'Withdrawal must stop recording, not just switch to cookieless recording');
 assert.ok(!component.includes('dangerouslySetInnerHTML'), 'Use the trusted external Next Script loader without another inline allowance');

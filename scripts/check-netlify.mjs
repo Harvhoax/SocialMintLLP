@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
-import { isPreviewDeployment } from '../lib/deploy-context.mjs';
+import { isPreviewDeployment } from '../src/lib/deploy-context.mjs';
 
 for (const [env, expected] of [
   [{}, false], [{VERCEL_ENV:'production'}, false], [{VERCEL_ENV:'preview'}, true],
@@ -47,6 +47,11 @@ for (const path of paths.filter(path => path !== '/')) {
 }
 assert.match(redirects, /\/\* \/404\.html 404\n$/);
 assert.ok(!redirects.includes('/* /index.html 200'), 'No soft-404 catchall');
+for (const file of readdirSync('public').filter(file => /^[a-f0-9]{32}\.txt$/.test(file) || file === 'BingSiteAuth.xml')) {
+  const original = readFileSync(join('public', file), 'utf8');
+  assert.equal(readFileSync(join(out, file), 'utf8'), original, `${file}: ownership verification survives export`);
+  if (file.endsWith('.txt')) assert.equal(original.trim(), file.slice(0, -4), 'IndexNow filename must match its key');
+}
 for (const line of redirects.split('\n').filter(line => line && !line.startsWith('#'))) {
   const [from, to, status] = line.split(/\s+/);
   if (status?.startsWith('30')) assert.notEqual(from.replace(/\/$/, ''), to.replace(/\/$/, ''), 'No slash-only self-redirects on Netlify');

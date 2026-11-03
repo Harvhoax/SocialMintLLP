@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {join} from 'node:path';
 
 const out = join(process.cwd(), 'out');
-const manifest = JSON.parse(readFileSync('data/media-manifest.json', 'utf8'));
+const manifest = JSON.parse(readFileSync('src/data/media-manifest.json', 'utf8'));
 const read = path => readFileSync(join(out, path));
 const files = readdirSync(join(out, 'media'), {recursive: true})
   .filter(path => statSync(join(out, 'media', path)).isFile());

@@ -103,7 +103,7 @@ with ThreadPoolExecutor(max_workers=2) as executor:
     encoded = list(executor.map(preview, sorted((PUBLIC / 'reels').glob('*-preview.mp4'))))
 PREVIEWS = {slug: entry for slug, entry, report in encoded}
 REPORT['videos'] = [report for slug, entry, report in encoded]
-(ROOT / 'data/media-manifest.json').write_text(json.dumps({'assets': ASSETS, 'previews': PREVIEWS}, indent=2) + '\n')
+(ROOT / 'src/data/media-manifest.json').write_text(json.dumps({'assets': ASSETS, 'previews': PREVIEWS}, indent=2) + '\n')
 (ROOT / 'tools/media-optimization-report.json').write_text(json.dumps(REPORT, indent=2) + '\n')
 for category, rows in REPORT.items():
     before, after = sum(row['before'] for row in rows), sum(row['after'] for row in rows)

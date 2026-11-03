@@ -4,7 +4,7 @@ Owner-supplied project: **SocialMint / z7v97eemj7**, website socialmintstudio.co
 
 ## Loading and consent
 
-`components/SiteClarity.tsx` uses Next.js Script with `lazyOnload` to request the official project tag once. It starts only on the production business domain after the visitor chooses **Allow recording**. There is no Clarity request before a decision or after an initial decline. The footer's **Recording preferences** control is available on all content pages. This control applies only to session recording; it does not change GA4.
+`src/components/SiteClarity.tsx` uses Next.js Script with `lazyOnload` to request the official project tag once. It starts only on the production business domain after the visitor chooses **Allow recording**. There is no Clarity request before a decision or after an initial decline. The footer's **Recording preferences** control is available on all content pages. This control applies only to session recording; it does not change GA4.
 
 The Clarity project's **Settings → Setup → Cookies** default is Off, enabling consent mode as documented by Microsoft. Before requesting the tag, the app queues Consent V2 with analytics_Storage granted and ad_Storage denied. No advertising consent or user identifiers are sent. A decline after recording started sends denied consent and stops the SDK; starting again uses the SDK's start command. These lifecycle commands are supported in Microsoft's open-source client. They avoid a reload that would discard an unfinished enquiry.
 

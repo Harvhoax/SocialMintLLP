@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {dirname, join} from 'node:path';
-import {measurementId} from '../lib/analytics-config.mjs';
+import {measurementId} from '../src/lib/analytics-config.mjs';
 
 // next/script inserts this official component's initializer after hydration,
 // so it isn't an inline script in exported HTML. Hash its exact installed text.

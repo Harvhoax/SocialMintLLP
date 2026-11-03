@@ -55,6 +55,10 @@ GA4 uses the official Next.js integration with measurement ID G-WKYJ3WLFRL on th
 
 Microsoft Clarity project z7v97eemj7 loads lazily only after the visitor allows recording on the live business domain. GA4 retains its existing behavior. Footer recording preferences let the visitor decline or withdraw; browser privacy signals are respected. The entire enquiry panel and preview are explicitly masked. See [CLARITY.md](CLARITY.md) for consent, CSP, masking and recording verification.
 
+## IndexNow
+
+The owner-provided IndexNow ownership file is included in the static export. It adds no client script or runtime requests. See [INDEXNOW.md](INDEXNOW.md) for the live verification URL, manual submission and response meanings. Future URL-submission automation is optional and is not installed.
+
 ## Checks
 
 `npm run build` includes TypeScript checking and produces static output. Run `npm run check:seo` after a build to check every sitemap URL, canonical, unique title/description, native video source, local link/asset, JSON-LD, social preview and crawl configuration. `npm audit --omit=dev` audits production dependencies. Browser QA should verify no video requests before Play, playback, pause, sound, native media controls, mobile layout, anchor navigation and brief validation. Real-user Core Web Vitals and public indexing must be measured after domain launch.

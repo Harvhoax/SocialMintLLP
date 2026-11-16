@@ -17,7 +17,15 @@ export const metadata: Metadata = {
   applicationName: site.name,
   category: 'Social media and video production',
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined, other: process.env.BING_SITE_VERIFICATION ? {'msvalidate.01': process.env.BING_SITE_VERIFICATION} : undefined },
-  icons: { icon: '/brand/mark.svg' },
+  icons: {
+    icon: [
+      {url: '/favicon.ico', sizes: '16x16 32x32 48x48', type: 'image/x-icon'},
+      {url: '/favicon-48.png', sizes: '48x48', type: 'image/png'},
+      {url: '/favicon-192.png', sizes: '192x192', type: 'image/png'},
+    ],
+    shortcut: '/favicon.ico',
+    apple: {url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png'},
+  },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en" data-palette={siteTheme.id} style={themeVariables as CSSProperties}><head><link rel="stylesheet" href={assetUrl('/fonts/fonts.css')} /><link rel="preload" href={assetUrl('/fonts/font-0.woff2')} as="font" type="font/woff2" crossOrigin="anonymous" /></head><body><noscript><style>{'.loader,.progress,.gradient-carousel,.carousel-toolbar,.circular-stage,.circular-controls{display:none!important}.cinema{height:100svh}.cinema-sticky{position:relative}.cinema-second{display:none}.cinema-opening{visibility:visible!important;opacity:1!important}'}</style></noscript>{children}{!isPreview && process.env.NODE_ENV === 'production' ? <SiteAnalytics/> : null}<SiteClarity production={!isPreview && process.env.NODE_ENV === 'production'}/></body></html>;

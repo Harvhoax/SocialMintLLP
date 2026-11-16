@@ -4,6 +4,7 @@
 - [Netlify deployment](NETLIFY-DEPLOYMENT.md): hosting, production and preview workflow.
 - [Security review](SECURITY-REVIEW.md): form boundaries and security controls.
 - [SEO launch](SEO-LAUNCH.md): crawlability, structured data and remaining owner-supplied content.
+- [Brand discovery](BRAND-DISCOVERY.md): official profiles, brand aliases and owner-side search tasks.
 - [IndexNow](INDEXNOW.md): ownership files and manual URL submission.
 - [Analytics](ANALYTICS.md): GA4 events and privacy boundaries.
 - [Clarity](CLARITY.md): recording consent and form masking.

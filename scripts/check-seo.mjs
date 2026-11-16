@@ -19,8 +19,9 @@ let localLinks = 0;
 let answerPages = 0;
 let answerCount = 0;
 const assets = new Set();
+const officialProfiles = ['https://www.instagram.com/socialmint.studio_/', 'https://www.linkedin.com/company/socialmint-studio/'];
 const attrs = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(match => [match[1], match[2]]));
-const strip = text => text.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+const strip = text => text.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 const normalize = text => strip(text).replace(/\s+/g, ' ').trim();
 const htmlFile = path => path === '/' ? 'index.html' : `${path.slice(1)}.html`;
 for (const url of urls) {
@@ -55,6 +56,13 @@ for (const url of urls) {
   for (const schema of schemas) assert.equal(schema['@context'], 'https://schema.org');
   const footer = html.match(/<footer\b[^>]*>(.*?)<\/footer>/s)?.[1] || '';
   assert.ok(normalize(footer).includes('SocialMint LLP'), `${path}: legal business name in footer`);
+  for (const profile of officialProfiles) {
+    const links = [...footer.matchAll(/<a\b[^>]*>/g)].map(match => attrs(match[0]));
+    const link = links.find(item => item.href === profile);
+    assert.ok(link, `${path}: official company profile visible in footer: ${profile}`);
+    assert.equal(link.target, '_blank');
+    assert.ok(link.rel.includes('noopener') && link.rel.includes('noreferrer'));
+  }
   if (path === '/' || path.startsWith('/services/')) {
     const faq = schemas.filter(schema => schema['@type'] === 'FAQPage');
     assert.equal(faq.length, 1, `${path}: one question schema`);
@@ -108,6 +116,17 @@ assert.match(read('404.html'), /name="robots" content="noindex"/, '404 pages mus
 const home = read('index.html');
 const homeGraph = JSON.parse(home.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])['@graph'];
 const org = homeGraph.find(item => item['@type'] === 'Organization');
+const website = homeGraph.find(item => item['@type'] === 'WebSite');
+assert.equal(org.name, 'SocialMint');
+assert.equal(website.name, org.name);
+assert.deepEqual(org.sameAs, officialProfiles, 'Company identity uses only owner-supplied company profiles');
+assert.deepEqual(org.alternateName, ['SocialMint Studio', 'Social Mint Studio', 'Social Mint']);
+assert.deepEqual(website.alternateName, org.alternateName, 'Website and business aliases agree');
+for (const person of homeGraph.filter(item => item['@type'] === 'Person')) {
+  assert.ok(person.sameAs.every(url => !officialProfiles.includes(url)), 'Partner identity remains separate from company identity');
+}
+assert.equal(strip(home.match(/<title>(.*?)<\/title>/s)[1]), 'SocialMint — Social Media Agency & Creative Studio in Mumbai');
+assert.ok(normalize(home).includes('SocialMint is a social media agency and creative studio for brands in Mumbai and across India.'), 'Clear visible business introduction');
 assert.equal(org.email, 'info@socialmintstudio.com');
 assert.equal(org.legalName, 'SocialMint LLP');
 assert.equal(org.telephone, '+919321388129');

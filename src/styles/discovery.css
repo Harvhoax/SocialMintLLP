@@ -1,4 +1,8 @@
 /* Crawlable content inherits the existing mint / coral identity. */
+.social-profiles,.content-footer .social-profiles { display:flex; flex-direction:row; flex-wrap:wrap; gap:8px 24px; }
+footer.section>.social-profiles { margin-bottom:16px; }
+html[data-palette] .social-profiles a { display:inline-flex; align-items:center; min-height:44px; font-size:16px; line-height:1.5; color:var(--mint); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:.3em; }
+html[data-palette] .social-profiles a:hover { color:var(--accent-soft); text-decoration-color:currentColor; }
 .discovery { display:grid; grid-template-columns:1fr 1.15fr; gap:9%; border-top:1px solid var(--line); background:var(--panel); }
 .discovery-label,.content-kicker { color:var(--accent); font-size:15px; line-height:1.6; }
 .discovery h2 { font-size:clamp(38px,4vw,64px); letter-spacing:-2px; line-height:1.1; margin:24px 0; }

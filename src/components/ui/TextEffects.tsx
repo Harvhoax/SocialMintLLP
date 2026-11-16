@@ -1,5 +1,6 @@
 'use client';
-// Original SocialMint effects, inspired by the requested animation directions.
+// Keep one real text version for extraction and assistive technology. Decorative
+// glyphs use CSS-generated content under aria-hidden, including before hydration.
 import {useEffect,useLayoutEffect,useRef,useState,type CSSProperties,type RefObject} from 'react';
 import {reconcileGlyphs,type Glyph} from '@/lib/text-motion';
 import {animateAfterScrollIdle} from '@/lib/text-idle';
@@ -30,21 +31,21 @@ function useEntrance(ref:RefObject<HTMLSpanElement|null>,selector:string,variant
 
 export function StaggerText({text,className=''}:{text:string;className?:string}){
  const ref=useRef<HTMLSpanElement>(null);useEntrance(ref,'.motion-piece','stagger');
- return <span ref={ref} className={`motion-stagger ${className}`}><span className="motion-sr">{text}</span><span aria-hidden="true">{text.split(/(\s+)/).map((word,i)=>/^\s+$/.test(word)?word:<span className="motion-word" key={i}><span className="motion-piece">{word}</span></span>)}</span></span>;
+ return <span ref={ref} className={`motion-stagger ${className}`}><span className="motion-sr">{text}</span><span aria-hidden="true">{text.split(/(\s+)/).map((word,i)=>/^\s+$/.test(word)?word:<span className="motion-word" key={i}><span className="motion-piece" data-motion-text={word}/></span>)}</span></span>;
 }
 
 export function VaporText({text,delay=0,enabled=true}:{text:string;delay?:number;enabled?:boolean}){
  const ref=useRef<HTMLSpanElement>(null);useEntrance(ref,'.motion-letter','vapor',delay,enabled);
- return <span ref={ref} className="motion-vapor"><span className="motion-sr">{text}</span><span className="motion-word" aria-hidden="true">{Array.from(text).map((char,i)=><span className="motion-letter" key={i}>{char===' '?'\u00a0':char}</span>)}</span></span>;
+ return <span ref={ref} className="motion-vapor"><span className="motion-sr">{text}</span><span className="motion-word" aria-hidden="true">{Array.from(text).map((char,i)=><span className="motion-letter" data-motion-text={char===' '?'\u00a0':char} key={i}/>)}</span></span>;
 }
 
 export function GhostText({prefix,text}:{prefix:string;text:string}){
  const ref=useRef<HTMLSpanElement>(null);useEntrance(ref,'.ghost-letter','ghost');
- return <span ref={ref} className="motion-ghost"><span className="motion-sr">{prefix}{text}</span><span aria-hidden="true">{prefix}<span className="ghost-completion">{Array.from(text).map((char,i)=><span className="ghost-letter" key={i}>{char}</span>)}</span><span className="ghost-caret"/></span></span>;
+ return <span ref={ref} className="motion-ghost"><span className="motion-sr">{prefix}{text}</span><span aria-hidden="true"><span data-motion-text={prefix}/><span className="ghost-completion">{Array.from(text).map((char,i)=><span className="ghost-letter" data-motion-text={char===' '?'\u00a0':char} key={i}/>)}</span><span className="ghost-caret"/></span></span>;
 }
 
 export function LetterSwap({text}:{text:string}){
- return <span className="motion-swap"><span className="motion-sr">{text}</span><span aria-hidden="true">{Array.from(text).map((char,i)=><span className="swap-letter" style={{'--letter-delay':`${Math.min(i*18,180)}ms`} as CSSProperties} key={i}><span className="swap-front">{char===' '?'\u00a0':char}</span><span className="swap-back">{char===' '?'\u00a0':char}</span></span>)}</span></span>;
+ return <span className="motion-swap"><span className="motion-sr">{text}</span><span aria-hidden="true">{Array.from(text).map((char,i)=><span className="swap-letter" style={{'--letter-delay':`${Math.min(i*18,180)}ms`} as CSSProperties} key={i}><span className="swap-front" data-motion-text={char===' '?'\u00a0':char}/><span className="swap-back" data-motion-text={char===' '?'\u00a0':char}/></span>)}</span></span>;
 }
 
 export function MorphText({text}:{text:string}){
@@ -78,5 +79,5 @@ export function MorphText({text}:{text:string}){
  },[glyphs]);
  const words:Glyph[][]=[[]];
  glyphs.forEach(glyph=>{if(/\s/.test(glyph.char)){words.push([glyph],[]);}else words[words.length-1].push(glyph);});
- return <span ref={root} className="motion-morph"><span className="motion-sr">{text}</span><span aria-hidden="true">{words.filter(word=>word.length).map(word=><span className={/\s/.test(word[0].char)?'morph-space':'morph-word'} key={word.map(g=>g.id).join('-')}>{word.map(glyph=><span className="morph-letter" ref={node=>{if(node)nodes.current.set(glyph.id,node);else nodes.current.delete(glyph.id);}} key={glyph.id}>{glyph.char}</span>)}</span>)}</span></span>;
+ return <span ref={root} className="motion-morph"><span className="motion-sr">{text}</span><span aria-hidden="true">{words.filter(word=>word.length).map(word=><span className={/\s/.test(word[0].char)?'morph-space':'morph-word'} key={word.map(g=>g.id).join('-')}>{word.map(glyph=><span className="morph-letter" data-motion-text={glyph.char} ref={node=>{if(node)nodes.current.set(glyph.id,node);else nodes.current.delete(glyph.id);}} key={glyph.id}/>)}</span>)}</span></span>;
 }

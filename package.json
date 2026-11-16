@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
-    "build": "npm run check:security && next build && node scripts/prepare-netlify.mjs && npm run check:seo && npm run check:netlify && npm run check:media && npm run check:analytics && npm run check:clarity",
+    "build": "npm run check:security && npm run check:text && next build && node scripts/prepare-netlify.mjs && npm run check:seo && npm run check:netlify && npm run check:media && npm run check:analytics && npm run check:clarity",
     "start": "node scripts/preview.mjs",
     "preview": "node scripts/preview.mjs",
     "typecheck": "tsc --noEmit",
     "check:seo": "node scripts/check-seo.mjs",
+    "check:text": "node scripts/check-text-motion.mjs",
     "check:security": "node scripts/check-security.cjs",
     "check:netlify": "node scripts/check-netlify.mjs",
     "check:media": "node scripts/check-media.mjs",

@@ -14,7 +14,7 @@ export async function generateMetadata({params}: Props) {
   const {slug} = await params;
   const film = filmDetails.find(item => item.slug === slug);
   if (!film) notFound();
-  return pageMetadata(`${film.title} — ${film.category} Film | SocialMint`, film.description, `/work/${film.slug}`, reelPoster(film.slug));
+  return pageMetadata(`${film.watchTitle} — ${film.category} Film | SocialMint`, film.description, `/work/${film.slug}`, reelPoster(film.slug));
 }
 
 export default async function FilmPage({params}: Props) {
@@ -28,10 +28,10 @@ export default async function FilmPage({params}: Props) {
     <StructuredData data={breadcrumbs([{name: 'Home', path: '/'}, {name: 'Films', path: '/work'}, {name: film.title, path: `/work/${slug}`}])} />
     {/* Google requires a real uploadDate for VideoObject rich results. Emit the
         full object only when the owner has confirmed first publication. */}
-    {published && <StructuredData data={{'@context': 'https://schema.org', '@type': 'VideoObject', '@id': absoluteUrl(`/work/${slug}#video`), name: film.title, description: film.description, thumbnailUrl: [absoluteUrl(reelPoster(slug))], contentUrl: absoluteUrl(reelPreview(slug)), uploadDate: published, duration: `PT${durationSeconds(film.duration)}S`, publisher: {'@id': organizationId}}} />}
-    <div className="watch-heading"><a className="content-back" href="/work">← All films</a><p className="content-kicker">{film.category} · {film.duration}</p><h1>{film.title}</h1></div>
+    {published && <StructuredData data={{'@context': 'https://schema.org', '@type': 'VideoObject', '@id': absoluteUrl(`/work/${slug}#video`), name: film.watchTitle, description: film.description, thumbnailUrl: [absoluteUrl(reelPoster(slug))], contentUrl: absoluteUrl(reelPreview(slug)), uploadDate: published, duration: `PT${durationSeconds(film.duration)}S`, publisher: {'@id': organizationId}}} />}
+    <div className="watch-heading"><a className="content-back" href="/work">← All films</a><p className="content-kicker">{film.category} · {film.duration}</p><h1>{film.watchTitle}</h1></div>
     <div className={`watch-screen ${film.landscape ? 'watch-landscape' : ''}`}><video controls playsInline muted preload="none" poster={reelPoster(slug)} width={film.landscape ? 1280 : 480} height={film.landscape ? 720 : 854} aria-label={`Watch ${film.title}`}><source src={reelPreview(slug)} type="video/mp4"/><p><a href={`/reels/${slug}.mp4`}>Open {film.title} as an MP4 video</a>.</p></video></div>
-    <div className="watch-description"><p>{film.description}</p><a className="content-action" href={`/reels/${slug}.mp4`}>Watch the HD file <span aria-hidden="true">↗</span></a><p>Interested in a film for your brand? Explore our <a href="/services/reels-video-editing">reels and video editing</a> or <a href="/services/video-production">video production</a> services for projects in Mumbai and across India.</p></div>
+    <div className="watch-description"><h2>About this video sample</h2><p>{film.description}</p><dl className="watch-facts"><div><dt>Runtime</dt><dd>{film.duration}</dd></div><div><dt>Format</dt><dd>{film.format}</dd></div><div><dt>Category</dt><dd>{film.category}</dd></div></dl><a className="content-action" href={`/reels/${slug}.mp4`}>Watch the HD file <span aria-hidden="true">↗</span></a><h2>Planning a similar film?</h2><p>{film.projectGuidance}</p><p>Explore our <a href="/services/reels-video-editing">reels and video editing</a> or <a href="/services/video-production">video production</a> services for projects in Mumbai and across India.</p></div>
     <div className="watch-next"><a href="/work">Back to all films</a><a href={`/work/${nextFilm.slug}`}>Next: {nextFilm.title} <span aria-hidden="true">→</span></a></div>
     <aside className="content-close"><h2>Let’s tell your story.</h2><a className="button primary" href="/#contact">Discuss your project <span aria-hidden="true">↗</span></a></aside>
   </ContentFrame>;

@@ -21,7 +21,34 @@ const descriptions: Record<string, string> = {
 // modification, encoding and build dates are not video publication dates.
 export const reelPublicationDates: Record<string, string> = {};
 
-export const filmDetails = reels.map(reel => ({ ...reel, description: descriptions[reel.slug] }));
+// Keep short owner-supplied gallery labels; use descriptive headings on the
+// static watch pages without changing their existing URLs or media filenames.
+const watchTitles: Record<string, string> = {
+  'social-edit-01': 'Social content reel — sample 01',
+  'social-edit-02': 'Social content reel — sample 02',
+  'short-form-edit': '15-second short-form video edit',
+  cafe: 'Café reel — food and hospitality',
+  'cafe-story': 'Café story — hospitality video',
+};
+
+const projectGuidance: Record<string, string> = {
+  'Social content': 'For a similar reel, tell us the audience, the main message and the platform where it will appear. Share your raw footage, brand assets and references, or let us know if you need an on-location shoot. We can then discuss the length, captions and number of versions.',
+  Automotive: 'For an automotive video, share the vehicle or event, the location and the audience you want to reach. Let us know whether footage is ready or a shoot is needed, which details matter most and where the finished film will be published.',
+  'Real estate': 'For a property video, tell us the property type, location and the spaces or features you want viewers to understand. Share existing footage or preferred shoot dates, along with the publishing platform and any approved property information.',
+  'Food & hospitality': 'For café, restaurant or hospitality content, share the venue, the dishes or experience you want to feature and the audience you want to reach. We can work with supplied footage or discuss an on-location shoot, then agree the format and scope.',
+  Storytelling: 'For an interview or documentary edit, share the subject, the story you want to tell and any recorded interviews or supporting footage. Tell us the intended audience, approximate running time and whether captions or different platform versions are needed.',
+  'Brand content': 'For a brand film, share the product or service, the intended audience and the message that should remain with the viewer. Include approved brand assets, existing footage, any shoot requirements and the channels where the film will appear.',
+  Travel: 'For a travel edit, share the destinations, available footage and the story or offer the video should communicate. Tell us the publishing platform, preferred length and any approved names or details that need to appear on screen.',
+  Wedding: 'For a wedding film, share the event dates, footage available and the moments that matter most to you. Tell us whether the film is a short highlight or a longer edit, who it is for and the preferred delivery format.',
+};
+
+export const filmDetails = reels.map(reel => ({
+  ...reel,
+  watchTitle: watchTitles[reel.slug] || reel.title,
+  description: descriptions[reel.slug],
+  projectGuidance: projectGuidance[reel.category],
+  format: reel.landscape ? 'Landscape' : 'Portrait',
+}));
 export function durationSeconds(value: string) {
   const [minutes, seconds] = value.split(':').map(Number);
   return minutes * 60 + seconds;

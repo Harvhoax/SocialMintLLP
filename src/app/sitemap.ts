@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...filmDetails.map(film => ({
       url: absoluteUrl(`/work/${film.slug}`),
       videos: [{
-        title: film.title, description: film.description,
+        title: film.watchTitle, description: film.description,
         thumbnail_loc: absoluteUrl(reelPoster(film.slug)),
         content_loc: absoluteUrl(reelPreview(film.slug)),
         duration: durationSeconds(film.duration),

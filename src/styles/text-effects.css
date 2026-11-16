@@ -1,5 +1,6 @@
 /* Text is visible without JavaScript; motion begins only inside the viewport. */
 .motion-sr { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip-path:inset(50%)!important; white-space:nowrap!important; border:0!important; }
+[data-motion-text]::before { content:attr(data-motion-text); }
 .motion-word,.morph-word { display:inline-block; white-space:nowrap; }
 .motion-piece,.motion-letter,.morph-letter { display:inline-block; }
 .motion-vapor { display:inline-block; }

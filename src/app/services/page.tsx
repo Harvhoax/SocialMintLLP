@@ -8,7 +8,7 @@ export const metadata = pageMetadata('Social Media & Creative Services in Mumbai
 export default function ServicesPage() {
   return <ContentFrame>
     <StructuredData data={breadcrumbs([{name: 'Home', path: '/'}, {name: 'Services', path: '/services'}])} />
-    <div className="content-intro"><a className="content-back" href="/">SocialMint / Services</a><p className="content-kicker">Mumbai · India</p><h1>A fresh angle.<br/><em>For every story.</em></h1><p className="content-lead">Social media management, video and design, brought together by one creative team. Explore the services we provide for brands in Mumbai and across India.</p><a className="content-action" href="/#services">Explore the 3D gallery <span aria-hidden="true">↗</span></a></div>
+    <div className="content-intro"><a className="content-back" href="/">SocialMint / Services</a><p className="content-kicker">Mumbai · India</p><h1>Social media &<br/><em>creative services.</em></h1><p className="content-lead">SocialMint brings social media management, video production and design together for brands in Mumbai and across India. We visit clients for shoots and also edit footage you provide.</p><a className="content-action" href="/#services">Explore the 3D gallery <span aria-hidden="true">↗</span></a></div>
     <div className="service-directory">{serviceDetails.map((service, index) => <article key={service.slug}>
       <span className="content-kicker">0{index + 1}</span><h2><a href={`/services/${service.slug}`}>{service.name} <span aria-hidden="true">↗</span></a></h2><p>{service.summary}</p><ul>{service.tags.map(tag => <li key={tag}>{tag}</li>)}</ul><a className="content-action" href={`/services/${service.slug}`}>Explore {service.name.toLowerCase()}</a>
     </article>)}</div>

@@ -106,6 +106,9 @@ for (const url of urls) {
     const slug = path.split('/').at(-1);
     assert.ok(html.includes(media.previews[slug].src), `${path}: stable optimized video source in HTML`);
     assert.ok(html.includes(media.assets[`/reels/${slug}.jpg`]), `${path}: optimized stable poster`);
+    assert.match(html, /class="watch-facts"/, `${path}: runtime, format and category are readable`);
+    assert.ok(normalize(html).includes('Planning a similar film?'), `${path}: useful project enquiry context`);
+    assert.match(html, /<h2>Planning a similar film\?<\/h2><p>[^<]{80,}<\/p>/, `${path}: meaningful project guidance is rendered`);
   }
 }
 const reachable = new Set();
@@ -114,6 +117,14 @@ visit('/');
 for (const url of urls) assert.ok(reachable.has(new URL(url).pathname), `${url}: reachable through HTML links from home`);
 assert.match(read('404.html'), /name="robots" content="noindex"/, '404 pages must not be indexed');
 const home = read('index.html');
+assert.equal(normalize(home.match(/<h1[^>]*>(.*?)<\/h1>/s)[1]), 'SocialMint. Social media & video studio in Mumbai.', 'Brand and service area in a single readable H1');
+for (const navName of ['Services', 'Work']) {
+  const nav = home.match(/<nav aria-label="Main navigation">(.*?)<\/nav>/s)[1];
+  assert.ok(nav.includes(`href="/${navName.toLowerCase()}"`), `${navName}: main navigation has a crawlable directory link`);
+}
+for (const heading of home.matchAll(/<h[12][^>]*>(.*?)<\/h[12]>/gs)) {
+  assert.ok(!/a scene\.a scene\.|A fresh angle\.A fresh angle\.|SSttaarrtt/.test(normalize(heading[1])), 'No duplicated animated heading text');
+}
 const homeGraph = JSON.parse(home.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])['@graph'];
 const org = homeGraph.find(item => item['@type'] === 'Organization');
 const website = homeGraph.find(item => item['@type'] === 'WebSite');
